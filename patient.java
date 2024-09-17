@@ -29,7 +29,7 @@ private class patient {//hvorfor funker ikke dette her, plis hjelp Ludvig ^^ -em
         return lastName;
     }
     public void setFirstName(String name) { this.firstName = name;}
- 
+
     public String getFirstName() {
         return firstName;
     }
