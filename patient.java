@@ -8,7 +8,7 @@ private class patient {//hvorfor funker ikke dette her, plis hjelp Ludvig ^^ -em
 
     //birthday, pls fiks dette, Ludvig ^^ -emil
 
-    private String notes; //denne burde være en egen klasse ^^ -emil
+    private String notes; //Plis fiks dette, Ludvig^^ -emil
 
     //encryptionkey, hva mente vi her egentlig? Thoughts, Ludvig? ^^ -emil
 
