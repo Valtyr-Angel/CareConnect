@@ -18,12 +18,18 @@ private class patient {//hvorfor funker ikke dette her, plis hjelp Ludvig ^^ -em
         this.firstName = firstName;
         this.notes = notes;
     }
+    public void setPatientId(int id) {this.patientId = id;}
     public int getPatientId() {
         return patientId;
+    }
+    public void setLastName(String name) {
+        this.lastName = name;
     }
     public String getLastName() {
         return lastName;
     }
+    public void setFirstName(String name) { this.firstName = name;}
+ 
     public String getFirstName() {
         return firstName;
     }
