@@ -1,0 +1,4 @@
+Uses NFC on the bracelet to get unique ID.  The ID is matched with the DB and userinfo is pulled to the client as a temp file.
+
+
+Add **Security and privacy** Conserns + solutions.
