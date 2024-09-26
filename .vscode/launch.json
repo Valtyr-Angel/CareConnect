@@ -2,6 +2,27 @@
     "configurations": [
         {
             "type": "java",
+            "name": "LoginTest",
+            "request": "launch",
+            "mainClass": "LoginTest.LoginTest",
+            "projectName": ""
+        },
+        {
+            "type": "java",
+            "name": "LoginTest",
+            "request": "launch",
+            "mainClass": "LoginTest.LoginTest",
+            "projectName": "careconnect"
+        },
+        {
+            "type": "java",
+            "name": "BraceletTest",
+            "request": "launch",
+            "mainClass": "AuthenticationTest.BraceletTest.BraceletTest",
+            "projectName": "careconnect"
+        },
+        {
+            "type": "java",
             "name": "SecurityApplication",
             "request": "launch",
             "mainClass": "security.src.main.java.security5.security.SecurityApplication",
