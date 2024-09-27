@@ -5,17 +5,16 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mockito;
 
-public class scanSignalTest {
+public class SignalScannerTest {
 
     @Test
     @DisplayName("Test authorized signal grants access")
     public void testAuthorizedSignalGrantsAccess() {
         // Arrange
-        SignalScanner mockScanner = Mockito.mock(SignalScanner.class);
-        Mockito.when(mockScanner.scanSignal("AUTHORIZED")).thenReturn(true);
+        SignalScanner scanner = new SignalScanner();
 
         // Act
-        boolean result = mockScanner.scanSignal("AUTHORIZED");
+        boolean result = scanner.scanSignal("AUTHORIZED");
 
         // Assert
         Assertions.assertTrue(result, "Signal should grant access for authorized users.");
@@ -25,11 +24,10 @@ public class scanSignalTest {
     @DisplayName("Test unauthorized signal denies access")
     public void testUnauthorizedSignalDeniesAccess() {
         // Arrange
-        SignalScanner mockScanner = Mockito.mock(SignalScanner.class);
-        Mockito.when(mockScanner.scanSignal("UNAUTHORIZED")).thenReturn(false);
+        SignalScanner scanner = new SignalScanner();
 
         // Act
-        boolean result = mockScanner.scanSignal("UNAUTHORIZED");
+        boolean result = scanner.scanSignal("UNAUTHORIZED");
 
         // Assert
         Assertions.assertFalse(result, "Signal should deny access for unauthorized users.");
