@@ -17,14 +17,29 @@ public class SecurityConfig {
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         http
             .authorizeHttpRequests(authorize -> authorize
+                .requestMatchers("/login", "/css/**", "/js/**", "/images/**").permitAll()
                 .requestMatchers("/admin/**").hasRole("ADMIN")
                 .requestMatchers("/user/**").hasRole("USER")
+                .requestMatchers("/ambulance/**").hasRole("AMBULANCE")
                 .anyRequest().authenticated()
             )
             .formLogin(formLogin -> formLogin
-                .permitAll()
-            )
+            .loginPage("/login")
+            .successHandler((request, response, authentication) -> {
+                String role = authentication.getAuthorities().iterator().next().getAuthority();
+                if (role.equals("ROLE_ADMIN")) {
+                    response.sendRedirect("/admin/home");
+                } else if (role.equals("ROLE_USER")) {
+                    response.sendRedirect("/user/home");
+                } else if (role.equals("ROLE_AMBULANCE")) {
+                    response.sendRedirect("/ambulance/home");
+                }
+            })
+            .permitAll()
+        )
             .logout(logout -> logout
+                .logoutUrl("/logout")
+                .logoutSuccessUrl("/login?logout")
                 .permitAll()
             );
         return http.build();
@@ -44,8 +59,14 @@ public class SecurityConfig {
             .roles("USER")
             .build();
 
+        var ambulance = User.withUsername("ambulance")
+            .password("{noop}userpass")
+            .roles("AMBULANCE")
+            .build();
+
         userDetailsManager.createUser(admin);
         userDetailsManager.createUser(user);
+        userDetailsManager.createUser(ambulance);
 
         return userDetailsManager;
     }
