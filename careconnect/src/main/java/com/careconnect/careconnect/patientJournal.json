@@ -1,0 +1,12 @@
+{
+    "12345": {
+      "navn": "Kari Hansen",
+      "alder": 78,
+      "journal": "Pasienten har hatt en stabil helse med noen mindre plager relatert til leddgikt. Ny oppdatering om medisinering nødvendig."
+    },
+    "67890": {
+      "navn": "Per Olsen",
+      "alder": 82,
+      "journal": "Pasienten har hatt høyt blodtrykk og trenger regelmessige kontroller. Ny notat lagt til om foreskrevet behandling."
+    }
+  }
