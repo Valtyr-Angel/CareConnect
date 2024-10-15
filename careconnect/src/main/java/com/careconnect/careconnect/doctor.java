@@ -19,7 +19,6 @@ public class doctor extends user {
         for (int id : assignedPatients) {
             sb.append(id).append(", ");
         }
-        // Remove the trailing comma and space
         if (sb.length() > 0) {
             sb.setLength(sb.length() - 2);
         }
