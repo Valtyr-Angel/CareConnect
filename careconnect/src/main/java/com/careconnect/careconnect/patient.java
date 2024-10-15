@@ -4,8 +4,13 @@ public class patient extends person {
     
     private int patientId;
 
-    private String adress;
+    private String patientAdress;
 
+    patient(String firstN, String lastN, int id, String adress){
+        super(firstN, lastN);
+        patientId = id;
+        patientAdress = adress;
+    }
     public void setPatientId(int i){
         this.patientId = i;
     }
@@ -13,9 +18,9 @@ public class patient extends person {
         return(this.patientId);
     }
     public void setAdress(String a){
-        this.adress = a;
+        this.patientAdress = a;
     }
     public String getAdress(){
-        return(this.adress);
+        return(this.patientAdress);
     }
 }

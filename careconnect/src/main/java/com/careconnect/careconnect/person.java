@@ -4,6 +4,10 @@ abstract class person {
     private String firstName;
     private String lastName;
 
+    person(String firstN, String lastN){
+        firstName = firstN;
+        lastName = lastN;
+    }
     public void setFirstName(String s){
         this.firstName = s;
     }
