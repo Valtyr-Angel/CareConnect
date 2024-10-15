@@ -11,13 +11,21 @@ public class doctor extends user {
     public void addAssignedPatient(int i){
         this.assignedPatients.add(i);
     }
-    public String getAssignedPatients() {
-        
-        for (int id : assignedPatients) {
-            System.out.println(id);                    
-        }
-        return;
+    public void removeAssignedPatient(int i){
+        this.assignedPatients.remove(i);
     }
+    public String getAssignedPatients() {
+        StringBuilder sb = new StringBuilder();
+        for (int id : assignedPatients) {
+            sb.append(id).append(", ");
+        }
+        // Remove the trailing comma and space
+        if (sb.length() > 0) {
+            sb.setLength(sb.length() - 2);
+        }
+        return sb.toString();
+    }
+    
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
