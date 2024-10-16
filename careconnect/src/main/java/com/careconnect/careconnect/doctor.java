@@ -12,11 +12,20 @@ public class doctor extends user {
         super(firstN, lastN, id, role, password);
 
     }
-    public void addAssignedPatient(int i){
-        this.assignedPatients.add(i);
+    public void addAssignedPatient(Object patientId) {
+        if (patientId instanceof Integer) {
+            this.assignedPatients.add((Integer) patientId);
+        } else {
+            throw new IllegalArgumentException("Invalid type: patientId must be an integer.");
+        }
     }
-    public void removeAssignedPatient(int i){
-        this.assignedPatients.remove(i);
+    
+    public void removeAssignedPatient(Object patientId) {
+        if (patientId instanceof Integer) {
+            this.assignedPatients.remove(Integer.valueOf((Integer) patientId));
+        } else {
+            throw new IllegalArgumentException("Invalid type: patientId must be an integer.");
+        }
     }
     public String getAssignedPatients() {
         StringBuilder sb = new StringBuilder();
@@ -32,7 +41,7 @@ public class doctor extends user {
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("Navn: ").append(this.getFirstName()).append(this.getLastName()).append("\n");
+        sb.append("Navn: ").append(this.getFirstName()).append(" ").append(this.getLastName()).append("\n");
         sb.append("Patients: ").append(this.getAssignedPatients()).append("\n");
         return sb.toString();
     }
