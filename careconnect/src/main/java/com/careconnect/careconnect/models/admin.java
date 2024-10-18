@@ -1,6 +1,4 @@
-package com.careconnect.careconnect;
-
-import org.hibernate.Length;
+package com.careconnect.careconnect.models;
 
 public class admin extends user{
     

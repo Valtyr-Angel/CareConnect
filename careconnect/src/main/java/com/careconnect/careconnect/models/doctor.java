@@ -1,8 +1,6 @@
-package com.careconnect.careconnect;
+package com.careconnect.careconnect.models;
 
 import java.util.ArrayList;
-
-import org.hibernate.Length;
 
 public class doctor extends user {
     
