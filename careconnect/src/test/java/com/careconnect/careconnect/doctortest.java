@@ -2,8 +2,9 @@ package com.careconnect.careconnect;
 
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
-import static org.junit.jupiter.api.Assertions.assertEquals;
+
 import org.springframework.boot.autoconfigure.jooq.JooqAutoConfiguration.DslContextConfiguration;
+import com.careconnect.careconnect.models.doctor;
 
 
 public class doctortest {

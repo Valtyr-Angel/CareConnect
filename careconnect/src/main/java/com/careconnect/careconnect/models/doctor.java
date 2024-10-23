@@ -6,7 +6,7 @@ public class doctor extends user {
     
     private ArrayList<Integer> assignedPatients = new ArrayList<>();
 
-    doctor(String firstN, String lastN, int id, String role, String password){
+    public doctor(String firstN, String lastN, int id, String role, String password){
         super(firstN, lastN, id, role, password);
 
     }
