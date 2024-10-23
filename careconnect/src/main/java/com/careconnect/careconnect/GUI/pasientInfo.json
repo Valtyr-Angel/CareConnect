@@ -1,18 +1,77 @@
-[
-  {
-    "navn": "Rannveig",
-    "etternavn": "Gundersen",
-    "alder": 80,
-    "medikamenter": ["Paracetamol", "Insulin"],
-    "legebesøk": [
-      {
-        "dato": "2024-01-20",
-        "beskrivelse": "Kontroll av diabetes"
+{
+  "patientsjournal": [
+    {
+      "patient_id": 1,
+      "personligdata": {
+        "name": "John",
+        "surname": "Doe",
+        "address": "123 Main St, Oslo",
+        "telefonnummer": "+47 12345678"
       },
-      {
-        "dato": "2023-11-15",
-        "beskrivelse": "Influensavaksine"
+      "opplysninger": {
+        "diagnoser": [
+          "Hypertension",
+          "Type 2 Diabetes"
+        ],
+        "medisiner": [
+          {
+            "name": "Metformin",
+            "dose": "500 mg",
+            "frequency": "twice daily"
+          },
+          {
+            "name": "Lisinopril",
+            "dose": "10 mg",
+            "frequency": "once daily"
+          }
+        ],
+        "vitalia": {
+          "NEWS SCORE": 5,
+          "BT": "140/90",
+          "Puls": 78,
+          "Respirasjonsfrekvens": 16,
+          "Bevissthetsnivå": "Alert",
+          "Blodsukker": 8.5,
+          "Temp": 37
+      
+        }
       }
-    ]
-  }
-]
+    },
+    {
+      "patient_id": 2,
+      "personligdata": {
+        "name": "Jane",
+        "surname": "Smith",
+        "address": "456 High St, Bergen",
+        "telefonnummer": "+47 87654321"
+      },
+      "opplysninger": {
+        "diagnoser": [
+          "Asthma",
+          "Hypothyroidism"
+        ],
+        "medisiner": [
+          {
+            "name": "Levothyroxine",
+            "dose": "100 mcg",
+            "frequency": "once daily"
+          },
+          {
+            "name": "Salbutamol",
+            "dose": "2 puffs",
+            "frequency": "as needed"
+          }
+        ],
+        "vitalia": {
+          "NEWS SCORE": 3,
+          "BT": "120/80",
+          "Puls": 72,
+          "Respirasjonsfrekvens": 18,
+          "Bevissthetsnivå": "Alert",
+          "Blodsukker": 6.5,
+          "Temp": 36.5
+        }
+      }
+    }
+  ]
+}
