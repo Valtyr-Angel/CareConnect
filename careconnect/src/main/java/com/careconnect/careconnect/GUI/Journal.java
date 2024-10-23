@@ -1,6 +1,7 @@
 package com.careconnect.careconnect.GUI;
 
 import org.json.JSONArray;
+import org.json.JSONException;
 import org.json.JSONObject;
 import javax.swing.*;
 import java.io.IOException;
@@ -11,7 +12,7 @@ public class Journal {
 
     // Method to read the JSON file and display its contents in a dialog
     public void performAction() {
-        String jsonFile = "C:\\Users\\Eivind\\Desktop\\bigdata\\CareConnectTest\\src\\pasientInfo.json"; // Path to your JSON file
+        String jsonFile = "src/main/java/com/careconnect/careconnect/GUI/pasientInfo.json"; // Path to your JSON file
 
         try {
             // Read the file content as a String
@@ -59,6 +60,8 @@ public class Journal {
 
         } catch (IOException e) {
             e.printStackTrace();
+        } catch (JSONException e) {
+            throw new RuntimeException(e);
         }
     }
 }
