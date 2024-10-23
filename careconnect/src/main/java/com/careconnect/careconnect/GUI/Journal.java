@@ -12,44 +12,50 @@ public class Journal {
 
     // Method to read the JSON file and display its contents in a dialog
     public void performAction() {
-        String jsonFile = "src/main/java/com/careconnect/careconnect/GUI/pasientInfo.json"; // Path to your JSON file
+        String jsonFile = "C:\\Users\\eivin\\IdeaProjects\\showcase\\src\\pasientInfo.json"; // Path to your JSON file
 
         try {
             // Read the file content as a String
             String content = new String(Files.readAllBytes(Paths.get(jsonFile)));
 
-            // Parse the JSON array
-            JSONArray patients = new JSONArray(content);
+            // Parse the JSON object
+            JSONObject jsonObject = new JSONObject(content);
+            // Get the patients journal array
+            JSONArray patients = jsonObject.getJSONArray("patientsjournal");
 
             // Build the content to display
             StringBuilder journalContent = new StringBuilder();
 
             for (int i = 0; i < patients.length(); i++) {
                 JSONObject patient = patients.getJSONObject(i);
+                JSONObject personalData = patient.getJSONObject("personligdata");
+                JSONObject opplysninger = patient.getJSONObject("opplysninger");
+                JSONArray medisiner = opplysninger.getJSONArray("medisiner");
+                JSONArray pasientlogg = patient.getJSONArray("pasientlogg");
 
                 // Append the patient's information
-                journalContent.append("Navn: ").append(patient.getString("navn")).append("\n");
-                journalContent.append("Etternavn: ").append(patient.getString("etternavn")).append("\n");
-                journalContent.append("Alder: ").append(patient.getInt("alder")).append("\n");
+                journalContent.append("Navn: ").append(personalData.getString("name")).append("\n");
+                journalContent.append("Etternavn: ").append(personalData.getString("surname")).append("\n");
+                journalContent.append("Adresse: ").append(personalData.getString("address")).append("\n");
+                journalContent.append("Telefonnummer: ").append(personalData.getString("telefonnummer")).append("\n");
 
                 // Append medications
-                JSONArray medikamenter = patient.getJSONArray("medikamenter");
                 journalContent.append("Medikamenter: ");
-                for (int j = 0; j < medikamenter.length(); j++) {
-                    journalContent.append(medikamenter.getString(j));
-                    if (j < medikamenter.length() - 1) {
+                for (int j = 0; j < medisiner.length(); j++) {
+                    JSONObject med = medisiner.getJSONObject(j);
+                    journalContent.append(med.getString("name")).append(" (").append(med.getString("dose")).append(", ").append(med.getString("frequency")).append(")");
+                    if (j < medisiner.length() - 1) {
                         journalContent.append(", ");
                     }
                 }
                 journalContent.append("\n");
 
-                // Append doctor visits
-                journalContent.append("Legebesøk:\n");
-                JSONArray legebesøk = patient.getJSONArray("legebesøk");
-                for (int k = 0; k < legebesøk.length(); k++) {
-                    JSONObject visit = legebesøk.getJSONObject(k);
-                    journalContent.append("  Dato: ").append(visit.getString("dato")).append(", ");
-                    journalContent.append("Beskrivelse: ").append(visit.getString("beskrivelse")).append("\n");
+                // Append patient log entries
+                journalContent.append("Pasientlogg:\n");
+                for (int k = 0; k < pasientlogg.length(); k++) {
+                    JSONObject logEntry = pasientlogg.getJSONObject(k);
+                    journalContent.append("  Dato: ").append(logEntry.getString("dato")).append(", ");
+                    journalContent.append("Rapport: ").append(logEntry.getString("spl_rapport")).append("\n");
                 }
 
                 journalContent.append("\n------------------\n");
