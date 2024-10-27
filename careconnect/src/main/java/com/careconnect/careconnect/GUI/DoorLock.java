@@ -2,10 +2,10 @@ package com.careconnect.careconnect.GUI;
 
 import javax.swing.*;
 
-public class Dørlås {
+public class DoorLock {
     private boolean isLocked;  // Holds the status of the door lock
 
-    public Dørlås() {
+    public DoorLock() {
         // Initialize the lock status to "locked"
         isLocked = true;
     }
