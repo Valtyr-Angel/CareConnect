@@ -1,4 +1,4 @@
-package com.careconnect.careconnect.config;
+package com.careconnect.security.config;
 
 import com.careconnect.careconnect.CustomAuthenticationSuccessHandler;
 import org.springframework.context.annotation.Bean;
