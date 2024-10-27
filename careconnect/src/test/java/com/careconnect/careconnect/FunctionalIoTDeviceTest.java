@@ -10,8 +10,22 @@ import org.springframework.boot.test.context.SpringBootTest;
 
 import com.careconnect.careconnect.models.FunctionalIoTDevice;
 
+/**
+* Enhetstester for FunctionalIoTDevice-klassen.
+*
+* FunctionalIoTDeviceTest tester funksjonaliteten til FunctionalIoTDevice for å sikre at
+* enheten kan skiftes mellom på- og av-tilstander korrekt. Testene verifiserer også at
+* statusen til enheten oppdateres i henhold til disse endringene.
+*
+* Eksempel på bruk:
+* <pre>
+* FunctionalIoTDeviceTest test = new FunctionalIoTDeviceTest();
+* test.testTurnOnDevice();
+* </pre>
+*/
+
 @SpringBootTest
-public class FunctionalIoTDeviceTest {
+ class FunctionalIoTDeviceTest {
 
     @Autowired
     private FunctionalIoTDevice device;

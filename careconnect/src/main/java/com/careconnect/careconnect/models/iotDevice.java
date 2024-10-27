@@ -1,6 +1,20 @@
 package com.careconnect.careconnect.models;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
+
+/**
+* Representerer en IoT-enhet i CareConnect-systemet.
+*
+* Klassen iotDevice inneholder grunnleggende informasjon om en IoT-enhet, som enhets-ID,
+* enhetsnavn, plassering og status. Den gir metoder for å hente og oppdatere denne informasjonen.
+* Denne klassen kan brukes som grunnlag for mer funksjonelle enheter og kan utvides ved arv.
+*
+* Eksempel på bruk:
+* <pre>
+* iotDevice device = new iotDevice("001", "Blodtrykksmåler", "Intensivavdeling", "På");
+* </pre>
+*/
 
 @Component
 public class iotDevice {
@@ -10,6 +24,7 @@ public class iotDevice {
     private String status;
 
     // Constructor
+    @Autowired
     public iotDevice(String deviceId, String deviceName, String location, String status) {
         this.deviceId = deviceId;
         this.deviceName = deviceName;
