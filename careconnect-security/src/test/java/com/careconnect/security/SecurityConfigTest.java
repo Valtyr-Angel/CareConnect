@@ -18,9 +18,10 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
 import com.careconnect.security.config.SecurityConfig;
-import com.careconnect.careconnect.controller.AdminController;
-import com.careconnect.careconnect.controller.LoginController;
-import com.careconnect.careconnect.controller.UserController;
+import com.careconnect.security.controller.AdminController;
+import com.careconnect.security.controller.LoginController;
+import com.careconnect.security.controller.UserController;
+import com.careconnect.security.handler.CustomAuthenticationSuccessHandler;
 
 
 @ExtendWith(SpringExtension.class)
