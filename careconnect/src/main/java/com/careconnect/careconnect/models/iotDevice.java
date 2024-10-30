@@ -17,7 +17,7 @@ import org.springframework.stereotype.Component;
 */
 
 @Component
-public class iotDevice {
+public class IotDevice {
     private String deviceId;
     private String deviceName;
     private String location;
@@ -25,7 +25,7 @@ public class iotDevice {
 
     // Constructor
     @Autowired
-    public iotDevice(String deviceId, String deviceName, String location, String status) {
+    public IotDevice(String deviceId, String deviceName, String location, String status) {
         this.deviceId = deviceId;
         this.deviceName = deviceName;
         this.location = location;
@@ -33,7 +33,8 @@ public class iotDevice {
     }
 
     // Default constructor for Spring
-    public iotDevice() {}
+    public IotDevice() {}
+    
 
     // Getters and Setters
     public String getDeviceId() {
