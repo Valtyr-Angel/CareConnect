@@ -10,6 +10,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 
 import com.careconnect.careconnect.models.FunctionalIoTDevice;
 
+
 /**
 * Enhetstester for FunctionalIoTDevice-klassen.
 *
