@@ -1,6 +1,8 @@
 package com.careconnect.careconnect.models;
 
-import org.springframework.beans.factory.annotation.Autowired;
+
+
+//import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 /**
@@ -24,7 +26,7 @@ public class IotDevice {
     private String status;
 
     // Constructor
-    @Autowired
+    //@Autowired
     public IotDevice(String deviceId, String deviceName, String location, String status) {
         this.deviceId = deviceId;
         this.deviceName = deviceName;

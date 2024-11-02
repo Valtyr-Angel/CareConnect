@@ -4,9 +4,14 @@ package com.careconnect.careconnect;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.ComponentScan;
+import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.Primary;
 
 import com.careconnect.careconnect.models.FunctionalIoTDevice;
 
@@ -26,10 +31,33 @@ import com.careconnect.careconnect.models.FunctionalIoTDevice;
 */
 
 @SpringBootTest
- class FunctionalIoTDeviceTest {
+ public class FunctionalIoTDeviceTest {
 
     @Autowired
     private FunctionalIoTDevice device;
+
+    //ny del her
+    @Configuration
+    @ComponentScan(basePackages = "com.careconnect.careconnect.models")
+    static class TestConfig {
+        
+        @Bean
+        @Primary
+        public FunctionalIoTDevice testFunctionalIoTDevice() {
+            return new FunctionalIoTDevice("001", "Test Device", "Test Location", "Off");
+        }
+    }
+
+    @BeforeEach
+    public void setUp() {
+        device.setDeviceId("001");  // Initialize with some common default values
+        device.setDeviceName("Generic Device");
+        device.setLocation("Default Location");
+        device.setStatus("Off");
+        device.turnOff();
+    }
+
+
 
     @Test
     public void testTurnOnDevice() {
