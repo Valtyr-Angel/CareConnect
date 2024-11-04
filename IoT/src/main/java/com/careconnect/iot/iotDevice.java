@@ -1,8 +1,8 @@
-package com.careconnect.careconnect.models;
+package com.careconnect.iot;
 
 
 
-//import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 /**

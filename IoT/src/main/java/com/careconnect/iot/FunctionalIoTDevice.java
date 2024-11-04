@@ -1,4 +1,4 @@
-package com.careconnect.careconnect.models;
+package com.careconnect.iot;
 
 import org.springframework.stereotype.Component;
 
