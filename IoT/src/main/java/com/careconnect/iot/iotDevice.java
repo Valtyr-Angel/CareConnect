@@ -1,8 +1,5 @@
 package com.careconnect.iot;
 
-
-
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 /**
@@ -19,7 +16,7 @@ import org.springframework.stereotype.Component;
 */
 
 @Component
-public class IotDevice {
+public class iotDevice {
     private String deviceId;
     private String deviceName;
     private String location;
@@ -27,7 +24,7 @@ public class IotDevice {
 
     // Constructor
     //@Autowired
-    public IotDevice(String deviceId, String deviceName, String location, String status) {
+    public iotDevice(String deviceId, String deviceName, String location, String status) {
         this.deviceId = deviceId;
         this.deviceName = deviceName;
         this.location = location;
@@ -35,7 +32,7 @@ public class IotDevice {
     }
 
     // Default constructor for Spring
-    public IotDevice() {}
+    public iotDevice() {}
     
 
     // Getters and Setters
@@ -73,7 +70,7 @@ public class IotDevice {
 
     @Override
     public String toString() {
-        return "IoTDevice [deviceId=" + deviceId + ", deviceName=" + deviceName +
+        return "ioTDevice [deviceId=" + deviceId + ", deviceName=" + deviceName +
                ", location=" + location + ", status=" + status + "]";
     }
 }
