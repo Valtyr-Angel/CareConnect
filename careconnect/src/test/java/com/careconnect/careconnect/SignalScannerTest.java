@@ -6,15 +6,31 @@ import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
+/**
+* Unit tests for the SignalScanner class.
+*
+* SignalScannerTest tester funksjonaliteten til SignalScanner ved å verifisere at
+* den riktig håndterer forskjellige signaler som kan gi eller nekte tilgang.
+* 
+* Denne klassen bruker Spring Boot for kontekstsupport og JUnit for enhetstesting. Testene
+* dekker scenarioer som gyldig signal, ugyldig signal, null-verdi og tom streng.
+*
+* Example usage:
+* <pre>
+* SignalScannerTest test = new SignalScannerTest();
+* test.testAuthorizedSignalGrantsAccess();
+* </pre>
+*/
+
 @SpringBootTest
-public class SignalScannerTest {
+class SignalScannerTest {
 
     @Autowired
     private SignalScanner signalScanner; // Inject SignalScanner as a Spring bean
 
     @Test
     @DisplayName("Test authorized signal grants access")
-    public void testAuthorizedSignalGrantsAccess() {
+    void testAuthorizedSignalGrantsAccess() {
         // Act
         boolean result = signalScanner.scanSignal("AUTHORIZED");
 
@@ -24,7 +40,7 @@ public class SignalScannerTest {
 
     @Test
     @DisplayName("Test unauthorized signal denies access")
-    public void testUnauthorizedSignalDeniesAccess() {
+    void testUnauthorizedSignalDeniesAccess() {
         // Act
         boolean result = signalScanner.scanSignal("UNAUTHORIZED");
 
@@ -34,7 +50,7 @@ public class SignalScannerTest {
 
     @Test
     @DisplayName("Test null signal denies access")
-    public void testNullSignalDeniesAccess() {
+    void testNullSignalDeniesAccess() {
         // Act
         boolean result = signalScanner.scanSignal(null);
 
@@ -44,7 +60,7 @@ public class SignalScannerTest {
 
     @Test
     @DisplayName("Test empty signal denies access")
-    public void testEmptySignalDeniesAccess() {
+    void testEmptySignalDeniesAccess() {
         // Act
         boolean result = signalScanner.scanSignal("");
 

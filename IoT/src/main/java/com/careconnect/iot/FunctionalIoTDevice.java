@@ -1,6 +1,20 @@
-package com.careconnect.careconnect.models;
+package com.careconnect.iot;
 
 import org.springframework.stereotype.Component;
+
+/**
+* Representerer en funksjonell IoT-enhet med mulighet for å endre tilstand (på/av).
+*
+* FunctionalIoTDevice er en utvidelse av iotDevice og legger til funksjonalitet
+* for å skru enheten av og på. Enheten har en innebygd statusindikator for å 
+* spore om den er aktiv.
+*
+* Eksempel på bruk:
+* <pre>
+* FunctionalIoTDevice device = new FunctionalIoTDevice("002", "Hjerteovervåker", "ICU", "Av");
+* device.turnOn();
+* </pre>
+*/
 
 @Component
 public class FunctionalIoTDevice extends iotDevice {
@@ -10,6 +24,7 @@ public class FunctionalIoTDevice extends iotDevice {
     public FunctionalIoTDevice(String deviceId, String deviceName, String location, String status) {
         super(deviceId, deviceName, location, status);
         this.isOn = false; // Default state is off
+        //this.isOn = "On".equals(status); maybe?
     }
 
     // Default constructor for Spring
