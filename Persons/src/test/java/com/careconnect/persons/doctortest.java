@@ -1,11 +1,10 @@
-package com.careconnect.careconnect;
+package com.careconnect.persons;
+
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertThrows;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import org.junit.jupiter.api.Test;
-import static org.junit.jupiter.api.Assertions.*;
-
-import org.springframework.boot.autoconfigure.jooq.JooqAutoConfiguration.DslContextConfiguration;
-import com.careconnect.careconnect.models.doctor;
-
 
 public class doctortest {
     @Test

@@ -20,6 +20,7 @@
         <module>careconnect</module>
         <module>careconnect-security</module>
 		<module>IoT</module>
+		<module>Persons</module>
         <!-- Add more modules here -->
     </modules>
 	
