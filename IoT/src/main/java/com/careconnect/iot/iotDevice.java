@@ -2,6 +2,7 @@ package com.careconnect.iot;
 
 import org.springframework.stereotype.Component;
 
+
 /**
 * Representerer en IoT-enhet i CareConnect-systemet.
 *
@@ -23,7 +24,6 @@ public class iotDevice {
     private String status;
 
     // Constructor
-    //@Autowired
     public iotDevice(String deviceId, String deviceName, String location, String status) {
         this.deviceId = deviceId;
         this.deviceName = deviceName;
