@@ -10,7 +10,7 @@
     </parent>
     
 	
-	<artifactId>IoT</artifactId>
+	<artifactId>Persons</artifactId>
 	
  <dependencies>
         <dependency>
