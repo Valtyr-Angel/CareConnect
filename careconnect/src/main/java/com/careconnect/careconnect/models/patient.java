@@ -6,7 +6,7 @@ public class patient extends person {
 
     private String patientAdress;
 
-    patient(String firstN, String lastN, int id, String adress){
+    public patient(String firstN, String lastN, int id, String adress){
         super(firstN, lastN);
         patientId = id;
         patientAdress = adress;
