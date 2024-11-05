@@ -17,11 +17,17 @@
     <description>CareConnect Module</description>
     <packaging>pom</packaging>
 
-
-
-
-
     <dependencies>
+    <dependency>
+            <groupId>com.careconnect</groupId>
+            <artifactId>careconnect-security</artifactId>
+            <version>1.0.0</version>
+        </dependency>
+
+
+
+
+
         <!-- Inherit common dependencies from the parent POM, add any additional module-specific dependencies here -->
         <!-- Example: -->
         <dependency>

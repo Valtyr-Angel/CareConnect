@@ -1,17 +1,14 @@
 package com.careconnect.careconnect;
 
+
+
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
-@SpringBootApplication
+@SpringBootApplication(scanBasePackages = "com.example")
 public class CareconnectApplication {
 
-	public static void main(String[] args) {
-		SpringApplication.run(CareconnectApplication.class, args);
-		
-	}
-
+    public static void main(String[] args) {
+        SpringApplication.run(CareconnectApplication.class, args);
+    }
 }
-
-
-
