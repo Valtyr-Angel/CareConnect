@@ -10,9 +10,9 @@
         <relativePath>../pom.xml</relativePath>
     </parent>
 
-    <groupId>com.careconnect</groupId>
+    <!--<groupId>com.careconnect</groupId>-->
     <artifactId>careconnect-security</artifactId>
-    <packaging>pom</packaging>
+    <packaging>jar</packaging>
 
 
     <dependencies>
