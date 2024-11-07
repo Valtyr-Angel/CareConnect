@@ -5,6 +5,13 @@
             "name": "Applikasjon",
             "request": "launch",
             "mainClass": "com.careconnect.careconnect.GUI.Applikasjon",
+            "projectName": "careconnect-core"
+        },
+        {
+            "type": "java",
+            "name": "Applikasjon",
+            "request": "launch",
+            "mainClass": "com.careconnect.careconnect.GUI.Applikasjon",
             "projectName": "careconnect"
         },
         {
