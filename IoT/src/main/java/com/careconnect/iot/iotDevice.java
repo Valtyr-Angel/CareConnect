@@ -15,14 +15,14 @@ package com.careconnect.iot;
 */
 
 
-public class iotDevice {
+public class IoTDevice {
     private String deviceId;
     private String deviceName;
     private String location;
     private String status;
 
     // Constructor
-    public iotDevice(String deviceId, String deviceName, String location, String status) {
+    public IoTDevice(String deviceId, String deviceName, String location, String status) {
         this.deviceId = deviceId;
         this.deviceName = deviceName;
         this.location = location;
@@ -30,7 +30,7 @@ public class iotDevice {
     }
 
     // Default constructor for Spring
-    public iotDevice() {}
+    public IoTDevice() {}
     
 
     // Getters and Setters

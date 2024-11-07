@@ -17,7 +17,7 @@ import org.springframework.stereotype.Component;
 */
 
 @Component
-public class FunctionalIoTDevice extends iotDevice {
+public class FunctionalIoTDevice extends IoTDevice {
     private boolean isOn;
 
     // Constructor
