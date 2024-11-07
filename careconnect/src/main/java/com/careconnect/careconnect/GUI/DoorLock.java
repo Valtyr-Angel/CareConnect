@@ -17,12 +17,7 @@ public class DoorLock {
 
     // Method to return the current lock status as a string
     public String getLockStatus() {
-        return isLocked ? "Status: Locked" : "Status: Open";
+        return isLocked ? "Status: Door is now Locked" : "Status: Door in now Open";
     }
 
-    // Perform action (just as a simple example, this method is no longer used)
-    public void performAction() {
-        String statusMessage = isLocked ? "Døren er låst." : "Døren er åpen.";
-        JOptionPane.showMessageDialog(null, statusMessage);
     }
-}

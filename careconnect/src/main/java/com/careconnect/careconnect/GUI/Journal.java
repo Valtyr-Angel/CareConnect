@@ -1,6 +1,7 @@
 package com.careconnect.careconnect.GUI;
 
 import org.json.JSONArray;
+import org.json.JSONException;
 import org.json.JSONObject;
 import javax.swing.*;
 import java.io.IOException;
@@ -57,7 +58,7 @@ public class Journal {
             // Display the journal content in a message dialog
             JOptionPane.showMessageDialog(null, journalContent.toString(), "Journal Content", JOptionPane.INFORMATION_MESSAGE);
 
-        } catch (IOException e) {
+        } catch (IOException | JSONException e) {
             e.printStackTrace();
         }
     }
