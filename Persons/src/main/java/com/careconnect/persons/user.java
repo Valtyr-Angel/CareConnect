@@ -1,6 +1,6 @@
 package com.careconnect.persons;
 
-public class user extends person {
+public class user extends Person {
     
     private int userId;
 

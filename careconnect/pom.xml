@@ -22,6 +22,17 @@
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-web</artifactId>
         </dependency>
+        <dependency>
+            <groupId>com.fasterxml.jackson.core</groupId>
+            <artifactId>jackson-databind</artifactId>
+                <version>2.18.1</version>
+        </dependency>
+        <!-- <dependency>
+            <groupId>com.careconnect</groupId>
+            <artifactId>persons</artifactId>
+            <version>1.0.0</version>
+        </dependency> -->
+
         <!-- Add more module-specific dependencies if needed -->
     </dependencies>
 

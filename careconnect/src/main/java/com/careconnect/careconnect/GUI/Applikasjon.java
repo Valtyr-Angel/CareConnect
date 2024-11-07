@@ -4,18 +4,27 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import org.springframework.web.client.RestTemplate;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.boot.SpringApplication;
+import java.util.Map;
 
+@SpringBootApplication
 public class Applikasjon extends JFrame {
     private CardLayout cardLayout;  // Layout manager for switching between panels
     private JPanel mainPanel;       // Main panel to hold different cards
     private Journal journal;        // Instance of Journal class
     private Dørlås dorlås;          // Instance of Dørlås class
     private JLabel lockStatusLabel; // Label to display lock status
+    private Map<String, Map<String, Object>> journalData; // To store patient journal data
 
     public Applikasjon() {
         // Initialize the Journal and Dørlås instances
         journal = new Journal();
         dorlås = new Dørlås();
+
+        // Call to method that reads JSON data from API
+        readJournalDataFromApi();
 
         // Set window properties
         setTitle("CareConnect");
@@ -53,6 +62,17 @@ public class Applikasjon extends JFrame {
 
         // Show the login method selection screen first
         cardLayout.show(mainPanel, "LoginMethod");
+    }
+
+    // Method to read the JSON file from a local Spring Boot REST API
+    private void readJournalDataFromApi() {
+        try {
+            RestTemplate restTemplate = new RestTemplate();
+            String url = "http://localhost:8080/api/patientJournal";
+            journalData = restTemplate.getForObject(url, Map.class);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 
     // Method to create the login method selection screen
@@ -315,22 +335,6 @@ public class Applikasjon extends JFrame {
         return mainMenu;
     }
 
-    // Method to show the Scanner panel
-    private void showScanner() {
-        cardLayout.show(mainPanel, "Scanner");
-    }
-
-    // Method to show the Journal panel
-    private void showJournal() {
-        cardLayout.show(mainPanel, "Journal");
-    }
-
-    // Method to show the Dørlås panel
-    private void showDorlås() {
-        cardLayout.show(mainPanel, "Dørlås");
-        updateLockStatus(); // Update lock status when the panel is shown
-    }
-
     // Method to create the Scanner panel
     private JPanel createScannerPanel() {
         JPanel panel = new JPanel(new BorderLayout());
@@ -353,33 +357,51 @@ public class Applikasjon extends JFrame {
     private JPanel createJournalPanel() {
         JPanel panel = new JPanel(new BorderLayout());
 
-        // Create Back button and place it at the top
+        // Input field for patient ID
+        JTextField patientIdField = new JTextField(10);
+        JButton fetchJournalButton = new JButton("Hent Journal");
+        JTextArea journalTextArea = new JTextArea(10, 30);
+        journalTextArea.setWrapStyleWord(true);
+        journalTextArea.setLineWrap(true);
+        journalTextArea.setEditable(false);
+
+        // Panel for input
+        JPanel inputPanel = new JPanel();
+        inputPanel.add(new JLabel("Pasient-ID:"));
+        inputPanel.add(patientIdField);
+        inputPanel.add(fetchJournalButton);
+
+        // Add components to the main panel
+        panel.add(inputPanel, BorderLayout.NORTH);
+        panel.add(new JScrollPane(journalTextArea), BorderLayout.CENTER);
+
+        // Back button
         JButton backButton = new JButton("Tilbake");
-        backButton.addActionListener(new ActionListener() {
+        panel.add(backButton, BorderLayout.SOUTH);
+        backButton.addActionListener(e -> cardLayout.show(mainPanel, "MainMenu"));
+
+        // Action listener for "Hent Journal" button
+        fetchJournalButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                cardLayout.show(mainPanel, "MainMenu");  // Go back to main menu
+                String patientId = patientIdField.getText().trim();
+                if (journalData != null && journalData.containsKey(patientId)) {
+                    Map<String, Object> patientInfo = journalData.get(patientId);
+                    String navn = (String) patientInfo.get("navn");
+                    int alder = ((Number) patientInfo.get("alder")).intValue();
+                    String journal = (String) patientInfo.get("journal");
+
+                    // Display journal information in the text area
+                    journalTextArea.setText(
+                            "Navn: " + navn + "\n" +
+                            "Alder: " + alder + "\n" +
+                            "Journal: " + journal
+                    );
+                } else {
+                    journalTextArea.setText("Ingen journal funnet for pasient-ID: " + patientId);
+                }
             }
         });
-        panel.add(backButton, BorderLayout.NORTH);  // Back button at the top
-
-        // Create a button to show the journal and place it in the center
-        JButton showJournalButton = new JButton("Show Journal");
-        showJournalButton.setPreferredSize(new Dimension(100, 30)); // Smaller size
-        showJournalButton.setBackground(new Color(173, 216, 230)); // Light blue color
-        panel.add(showJournalButton, BorderLayout.CENTER);  // Add button in the center
-
-        // Action listener for "Show Journal" button
-        showJournalButton.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                journal.performAction();  // Call the performAction method from Journal class
-            }
-        });
-
-        // Create a label for status and place it at the bottom
-        JLabel statusLabel = new JLabel("This is the Journal panel", SwingConstants.CENTER); // Center text
-        panel.add(statusLabel, BorderLayout.SOUTH);  // Status label at the bottom
 
         return panel;
     }
@@ -426,8 +448,13 @@ public class Applikasjon extends JFrame {
     }
 
     public static void main(String[] args) {
+        // Run the Spring Boot application
+        SpringApplication.run(Applikasjon.class, args);
+
         // Create and display the window
-        Applikasjon window = new Applikasjon();
-        window.setVisible(true);
+        SwingUtilities.invokeLater(() -> {
+            Applikasjon window = new Applikasjon();
+            window.setVisible(true);
+        });
     }
 }

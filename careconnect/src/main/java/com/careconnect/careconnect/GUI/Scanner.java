@@ -1,12 +1,14 @@
+/* 
 package com.careconnect.careconnect.GUI;
-import java.util.ArrayList;
 
-import com.careconnect.careconnect.models.patient;
+import java.util.ArrayList;
+import com.careconnect.persons.Patient;
+
 
 public class Scanner {
 
-    public static patient findPatientById(ArrayList<patient> patients, int id) {
-        for (patient patient : patients) {
+    public static Patient findPatientById(ArrayList<Patient> patients, int id) {
+        for (Patient patient : patients) {
             if (patient.getPatientId() == id) {
                 return patient;
             }
@@ -14,3 +16,6 @@ public class Scanner {
         return null;
     }
 }
+
+
+*/

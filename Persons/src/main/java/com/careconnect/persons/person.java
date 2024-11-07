@@ -1,10 +1,10 @@
 package com.careconnect.persons;
 
-abstract class person {
+abstract class Person {
     private String firstName;
     private String lastName;
 
-    person(String firstN, String lastN){
+    Person(String firstN, String lastN){
         firstName = firstN;
         lastName = lastN;
     }

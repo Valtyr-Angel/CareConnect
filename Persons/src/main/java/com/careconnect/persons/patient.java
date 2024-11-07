@@ -1,26 +1,28 @@
 package com.careconnect.persons;
 
-public class patient extends person {
-    
+public class Patient extends Person {
     private int patientId;
+    private String patientAddress;
 
-    private String patientAdress;
+    public Patient(String firstName, String lastName, int id, String address) {
+        super(firstName, lastName);
+        this.patientId = id;
+        this.patientAddress = address;
+    }
 
-    patient(String firstN, String lastN, int id, String adress){
-        super(firstN, lastN);
-        patientId = id;
-        patientAdress = adress;
+    public void setPatientId(int id) {
+        this.patientId = id;
     }
-    public void setPatientId(int i){
-        this.patientId = i;
+
+    public int getPatientId() {
+        return this.patientId;
     }
-    public int getPatientId(){
-        return(this.patientId);
+
+    public void setAddress(String address) {
+        this.patientAddress = address;
     }
-    public void setAdress(String a){
-        this.patientAdress = a;
-    }
-    public String getAdress(){
-        return(this.patientAdress);
+
+    public String getAddress() {
+        return this.patientAddress;
     }
 }

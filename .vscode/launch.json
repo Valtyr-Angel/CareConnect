@@ -2,6 +2,13 @@
     "configurations": [
         {
             "type": "java",
+            "name": "Applikasjon",
+            "request": "launch",
+            "mainClass": "com.careconnect.careconnect.GUI.Applikasjon",
+            "projectName": "careconnect"
+        },
+        {
+            "type": "java",
             "name": "Spring Boot-CareconnectApplication<careconnect>",
             "request": "launch",
             "cwd": "${workspaceFolder}",
