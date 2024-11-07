@@ -24,10 +24,11 @@ public class FunctionalIoTDevice extends iotDevice {
     public FunctionalIoTDevice(String deviceId, String deviceName, String location, String status) {
         super(deviceId, deviceName, location, status);
         this.isOn = false; // Default state is off
-        //this.isOn = "On".equals(status); maybe?
+        this.isOn = "On".equals(status);
     }
 
     // Default constructor for Spring
+    
     public FunctionalIoTDevice() {
         super();
         this.isOn = false;

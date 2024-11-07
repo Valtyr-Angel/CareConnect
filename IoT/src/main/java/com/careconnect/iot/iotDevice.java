@@ -1,7 +1,5 @@
 package com.careconnect.iot;
 
-import org.springframework.stereotype.Component;
-
 
 /**
 * Representerer en IoT-enhet i CareConnect-systemet.
@@ -16,7 +14,7 @@ import org.springframework.stereotype.Component;
 * </pre>
 */
 
-@Component
+
 public class iotDevice {
     private String deviceId;
     private String deviceName;
