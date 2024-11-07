@@ -4,9 +4,11 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import org.springframework.web.client.RestTemplate;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.SpringApplication;
+import org.springframework.core.io.ClassPathResource;
+import com.fasterxml.jackson.databind.ObjectMapper;
+import java.io.InputStream;
 import java.util.Map;
 
 @SpringBootApplication
@@ -23,8 +25,8 @@ public class Applikasjon extends JFrame {
         journal = new Journal();
         dorlås = new Dørlås();
 
-        // Call to method that reads JSON data from API
-        readJournalDataFromApi();
+        // Call to method that reads JSON data from resources
+        readJournalDataFromResources();
 
         // Set window properties
         setTitle("CareConnect");
@@ -47,7 +49,7 @@ public class Applikasjon extends JFrame {
         JPanel mainMenu = createMainMenu();
         JPanel scannerPanel = createScannerPanel();
         JPanel journalPanel = createJournalPanel();
-        JPanel dorlåsPanel = createDorlåsPanel();
+        JPanel dorlåsPanel = createDørlåsPanel();
 
         mainPanel.add(regularLoginPanel, "RegularLogin");
         mainPanel.add(ansattkortLoginPanel, "AnsattkortLogin");
@@ -64,12 +66,13 @@ public class Applikasjon extends JFrame {
         cardLayout.show(mainPanel, "LoginMethod");
     }
 
-    // Method to read the JSON file from a local Spring Boot REST API
-    private void readJournalDataFromApi() {
+    // Method to read the JSON file from resources folder
+    private void readJournalDataFromResources() {
         try {
-            RestTemplate restTemplate = new RestTemplate();
-            String url = "http://localhost:8080/api/patientJournal";
-            journalData = restTemplate.getForObject(url, Map.class);
+            ClassPathResource resource = new ClassPathResource("patientInfo.json");
+            InputStream inputStream = resource.getInputStream();
+            ObjectMapper mapper = new ObjectMapper();
+            journalData = mapper.readValue(inputStream, Map.class);
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -357,22 +360,37 @@ public class Applikasjon extends JFrame {
     private JPanel createJournalPanel() {
         JPanel panel = new JPanel(new BorderLayout());
 
-        // Input field for patient ID
-        JTextField patientIdField = new JTextField(10);
-        JButton fetchJournalButton = new JButton("Hent Journal");
+        // Input field for patient ID search
+        JTextField patientIdSearchField = new JTextField(10);
+        JButton searchButton = new JButton("Søk");
         JTextArea journalTextArea = new JTextArea(10, 30);
         journalTextArea.setWrapStyleWord(true);
         journalTextArea.setLineWrap(true);
         journalTextArea.setEditable(false);
 
-        // Panel for input
-        JPanel inputPanel = new JPanel();
-        inputPanel.add(new JLabel("Pasient-ID:"));
-        inputPanel.add(patientIdField);
-        inputPanel.add(fetchJournalButton);
+        // JList to display all patient IDs
+        DefaultListModel<String> patientListModel = new DefaultListModel<>();
+        JList<String> patientList = new JList<>(patientListModel);
+        patientList.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
+
+        // Load all patient IDs into the list
+        if (journalData != null) {
+            for (String patientId : journalData.keySet()) {
+                patientListModel.addElement(patientId);
+            }
+        }
+
+        // Panel for input and list
+        JPanel inputPanel = new JPanel(new BorderLayout());
+        JPanel searchPanel = new JPanel();
+        searchPanel.add(new JLabel("Søk Pasient-ID:"));
+        searchPanel.add(patientIdSearchField);
+        searchPanel.add(searchButton);
+        inputPanel.add(searchPanel, BorderLayout.NORTH);
+        inputPanel.add(new JScrollPane(patientList), BorderLayout.CENTER);
 
         // Add components to the main panel
-        panel.add(inputPanel, BorderLayout.NORTH);
+        panel.add(inputPanel, BorderLayout.WEST);
         panel.add(new JScrollPane(journalTextArea), BorderLayout.CENTER);
 
         // Back button
@@ -380,25 +398,26 @@ public class Applikasjon extends JFrame {
         panel.add(backButton, BorderLayout.SOUTH);
         backButton.addActionListener(e -> cardLayout.show(mainPanel, "MainMenu"));
 
-        // Action listener for "Hent Journal" button
-        fetchJournalButton.addActionListener(new ActionListener() {
+        // Action listener for search button
+        searchButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                String patientId = patientIdField.getText().trim();
-                if (journalData != null && journalData.containsKey(patientId)) {
-                    Map<String, Object> patientInfo = journalData.get(patientId);
-                    String navn = (String) patientInfo.get("navn");
-                    int alder = ((Number) patientInfo.get("alder")).intValue();
-                    String journal = (String) patientInfo.get("journal");
-
-                    // Display journal information in the text area
-                    journalTextArea.setText(
-                            "Navn: " + navn + "\n" +
-                            "Alder: " + alder + "\n" +
-                            "Journal: " + journal
-                    );
+                String searchId = patientIdSearchField.getText().trim();
+                if (journalData != null && journalData.containsKey(searchId)) {
+                    patientList.setSelectedValue(searchId, true);
+                    displayJournalInfo(searchId, journalTextArea);
                 } else {
-                    journalTextArea.setText("Ingen journal funnet for pasient-ID: " + patientId);
+                    journalTextArea.setText("Ingen journal funnet for pasient-ID: " + searchId);
+                }
+            }
+        });
+
+        // List selection listener for patient list
+        patientList.addListSelectionListener(e -> {
+            if (!e.getValueIsAdjusting()) {
+                String selectedPatientId = patientList.getSelectedValue();
+                if (selectedPatientId != null) {
+                    displayJournalInfo(selectedPatientId, journalTextArea);
                 }
             }
         });
@@ -406,8 +425,27 @@ public class Applikasjon extends JFrame {
         return panel;
     }
 
+    // Helper method to display journal information
+    private void displayJournalInfo(String patientId, JTextArea journalTextArea) {
+        if (journalData != null && journalData.containsKey(patientId)) {
+            Map<String, Object> patientInfo = journalData.get(patientId);
+            String navn = (String) patientInfo.get("navn");
+            int alder = ((Number) patientInfo.get("alder")).intValue();
+            String journal = (String) patientInfo.get("journal");
+
+            // Display journal information in the text area
+            journalTextArea.setText(
+                    "Navn: " + navn + "\n" +
+                    "Alder: " + alder + "\n" +
+                    "Journal: " + journal
+            );
+        } else {
+            journalTextArea.setText("Ingen journal funnet for pasient-ID: " + patientId);
+        }
+    }
+
     // Method to create the Dørlås panel
-    private JPanel createDorlåsPanel() {
+    private JPanel createDørlåsPanel() {
         JPanel panel = new JPanel(new BorderLayout());
 
         // Create Back button and place it at the top
