@@ -19,7 +19,7 @@ import com.careconnect.iot.FunctionalIoTDevice;
 @RequestMapping("/api/devices")
 public class FunctionalIoTDeviceController {
 
-    private List<FunctionalIoTDevice> devices = new ArrayList<>();
+    private final List<FunctionalIoTDevice> devices = new ArrayList<>();
 
     @Autowired
     private FunctionalIoTDevice functionalIoTDevice;
