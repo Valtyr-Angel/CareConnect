@@ -1,3 +1,6 @@
+# Exclude .class files (which are generated in target/build directories)
+*.class
+
 HELP.md
 target/
 !.mvn/wrapper/maven-wrapper.jar
