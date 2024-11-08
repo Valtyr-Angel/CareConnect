@@ -1,4 +1,4 @@
-package com.careconnect.careconnect.models;
+package com.careconnect.persons;
 
 public class user extends person {
     

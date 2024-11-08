@@ -1,4 +1,4 @@
-package com.careconnect.careconnect.models;
+package com.careconnect.persons;
 
 abstract class person {
     private String firstName;

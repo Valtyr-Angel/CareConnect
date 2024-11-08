@@ -1,5 +1,6 @@
 package com.careconnect.iot;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 /**
@@ -17,17 +18,20 @@ import org.springframework.stereotype.Component;
 */
 
 @Component
-public class FunctionalIoTDevice extends iotDevice {
+public class FunctionalIoTDevice extends IoTDevice {
     private boolean isOn;
 
     // Constructor
+
+    @Autowired
     public FunctionalIoTDevice(String deviceId, String deviceName, String location, String status) {
-        super(deviceId, deviceName, location, status);
+        super();
         this.isOn = false; // Default state is off
-        //this.isOn = "On".equals(status); maybe?
+        this.isOn = "On".equals(status);
     }
 
     // Default constructor for Spring
+    
     public FunctionalIoTDevice() {
         super();
         this.isOn = false;
