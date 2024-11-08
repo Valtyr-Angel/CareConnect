@@ -12,7 +12,7 @@ public class Journal {
 
     // Method to read the JSON file and display its contents in a dialog
     public void performAction() {
-        String jsonFile = "C:\\Users\\eivin\\OneDrive\\Documents\\GitHub\\CareConnect\\careconnect\\src\\main\\java\\com\\careconnect\\careconnect\\GUI\\pasientInfo.json"; // Path to your JSON file
+        String jsonFile = "C:\\Users\\Eivind\\Documents\\GitHub\\CareConnect\\careconnect\\src\\main\\java\\com\\careconnect\\careconnect\\GUI\\pasientInfo.json"; // Path to your JSON file
 
         try {
             // Read the file content as a String

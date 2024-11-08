@@ -46,51 +46,5 @@
         }
       ]
     },
-    {
-      "patient_id": 2,
-      "personligdata": {
-        "name": "Jane",
-        "surname": "Smith",
-        "address": "456 High St, Bergen",
-        "telefonnummer": "+47 87654321"
-      },
-      "opplysninger": {
-        "diagnoser": [
-          "Asthma",
-          "Hypothyroidism"
-        ],
-        "medisiner": [
-          {
-            "name": "Levothyroxine",
-            "dose": "100 mcg",
-            "frequency": "once daily"
-          },
-          {
-            "name": "Salbutamol",
-            "dose": "2 puffs",
-            "frequency": "as needed"
-          }
-        ],
-        "vitalia": {
-          "NEWS SCORE": 3,
-          "BT": "120/80",
-          "Puls": 72,
-          "Respirasjonsfrekvens": 18,
-          "Bevissthetsnivå": "Alert",
-          "Blodsukker": 6.5,
-          "Temp": 36.5
-        }
-      },
-      "pasientlogg": [
-        {
-          "dato": "2024-10-22",
-          "spl_rapport": "Pasienten opplevde mild pustebesvær på kvelden. Salbutamol brukt etter behov, og symptomene avtok. Ingen andre endringer."
-        },
-        {
-          "dato": "2024-10-23",
-          "spl_rapport": "Ingen nye astmasymptomer i dag. Vitalia stabil og pasienten rapporterer å føle seg bra."
-        }
-      ]
-    }
   ]
 }
