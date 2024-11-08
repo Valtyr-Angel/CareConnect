@@ -14,6 +14,7 @@ package com.careconnect.iot;
 * </pre>
 */
 
+
 public class IoTDevice {
     private String deviceId;
     private String deviceName;
