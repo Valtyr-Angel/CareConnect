@@ -36,7 +36,7 @@ public class IoTDeviceService {
     }
 
     public void createDevice(IoTDevice device) {
-        ioTDevicePort.createDevice(device);  // Bruker IoTDevice som DTO
+        ioTDevicePort.createDevice(device);  // Bruker IoTDevice som DTO, sikker at det er DTO?
     }
 
     public void updateDeviceStatus(String id, String newStatus) {
