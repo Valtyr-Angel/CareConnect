@@ -12,7 +12,6 @@ import com.careconnect.security.service.AuthenticationService;
 @Service
 public class AuthenticationServiceImplementation implements AuthenticationService {
 
-    @Autowired
     private final AuthenticationManager authenticationManager;
 
     @Autowired

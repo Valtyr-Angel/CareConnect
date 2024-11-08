@@ -6,10 +6,13 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.SpringApplication;
-import org.springframework.core.io.ClassPathResource;
-import com.fasterxml.jackson.databind.ObjectMapper;
-import java.io.InputStream;
+import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Configuration;
+import org.springframework.web.client.RestTemplate;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import java.util.Map;
+
 
 @SpringBootApplication
 public class Applikasjon extends JFrame {
@@ -19,14 +22,15 @@ public class Applikasjon extends JFrame {
     private Dørlås dorlås;          // Instance of Dørlås class
     private JLabel lockStatusLabel; // Label to display lock status
     private Map<String, Map<String, Object>> journalData; // To store patient journal data
+    private DefaultListModel<String> patientListModel = new DefaultListModel<>(); // To store patient list model
+
+    @Autowired
+    private RestTemplate restTemplate;
 
     public Applikasjon() {
         // Initialize the Journal and Dørlås instances
         journal = new Journal();
         dorlås = new Dørlås();
-
-        // Call to method that reads JSON data from resources
-        readJournalDataFromResources();
 
         // Set window properties
         setTitle("CareConnect");
@@ -66,15 +70,23 @@ public class Applikasjon extends JFrame {
         cardLayout.show(mainPanel, "LoginMethod");
     }
 
-    // Method to read the JSON file from resources folder
-    private void readJournalDataFromResources() {
+    private void readJournalDataFromApi() {
         try {
-            ClassPathResource resource = new ClassPathResource("patientInfo.json");
-            InputStream inputStream = resource.getInputStream();
-            ObjectMapper mapper = new ObjectMapper();
-            journalData = mapper.readValue(inputStream, Map.class);
+            String url = "http://localhost:8080/api/patientJournal";
+            journalData = restTemplate.getForObject(url, Map.class);
         } catch (Exception e) {
             e.printStackTrace();
+        }
+    }
+
+    private Map<String, Object> getPatientDataById(String patientId) {
+        try {
+            String url = "http://localhost:8080/api/patientJournal/" + patientId;
+            ResponseEntity<Map> response = restTemplate.getForEntity(url, Map.class);
+            return response.getBody();
+        } catch (Exception e) {
+            e.printStackTrace();
+            return null;
         }
     }
 
@@ -288,7 +300,16 @@ public class Applikasjon extends JFrame {
         return panel;
     }
 
-    // Method to create the main menu panel (same as your original code)
+    private void updatePatientListModel() {
+        if (journalData != null) {
+            patientListModel.clear();
+            for (String patientId : journalData.keySet()) {
+                patientListModel.addElement(patientId);
+            }
+        }
+    }
+
+    // Method to create the main menu panel
     private JPanel createMainMenu() {
         JPanel mainMenu = new JPanel();
         mainMenu.setLayout(new FlowLayout());  // Simple layout for buttons
@@ -315,7 +336,14 @@ public class Applikasjon extends JFrame {
         button2.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                cardLayout.show(mainPanel, "Journal");  // Show Journal panel
+                // Hent data fra API
+                readJournalDataFromApi();
+                
+                // Oppdater pasientliste-modellen med data fra API
+                updatePatientListModel();
+        
+                // Vis Journal-panelet
+                cardLayout.show(mainPanel, "Journal");
             }
         });
 
@@ -369,7 +397,6 @@ public class Applikasjon extends JFrame {
         journalTextArea.setEditable(false);
 
         // JList to display all patient IDs
-        DefaultListModel<String> patientListModel = new DefaultListModel<>();
         JList<String> patientList = new JList<>(patientListModel);
         patientList.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
 
