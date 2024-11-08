@@ -4,20 +4,28 @@ abstract class Person {
     private String firstName;
     private String lastName;
 
-    Person(String firstN, String lastN){
-        firstName = firstN;
-        lastName = lastN;
+    Person(String firstName, String lastName) {
+        this.firstName = firstName;
+        this.lastName = lastName;
     }
-    public void setFirstName(String s){
-        this.firstName = s;
+
+    public void setFirstName(String firstName) {
+        this.firstName = firstName;
     }
-    public String getFirstName(){
-        return(this.firstName);
+
+    public String getFirstName() {
+        return this.firstName;
     }
-    public void setLastName(String s){
-        this.lastName = s;
+
+    public void setLastName(String lastName) {
+        this.lastName = lastName;
     }
-    public String getLastName(){
-        return(this.lastName);
+
+    public String getLastName() {
+        return this.lastName;
+    }
+
+    public String getName() {
+        return firstName + " " + lastName;
     }
 }
