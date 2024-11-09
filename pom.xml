@@ -21,6 +21,10 @@
 		<module>careconnect-application</module>
         <!-- Add more modules here -->
     </modules>
+
+
+
+	
 	<name>careconnect</name>
 	<description>Demo project for Spring Boot</description>
 
@@ -84,11 +88,33 @@
 			<artifactId>lombok</artifactId>
 			<optional>true</optional>
 		</dependency>
+
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-test</artifactId>
 			<scope>test</scope>
+			<exclusions>
+        <exclusion>
+            <groupId>org.skyscreamer</groupId>
+            <artifactId>jsonassert</artifactId>
+        </exclusion>
+    </exclusions>
 		</dependency>
+		<dependency>
+    <groupId>org.skyscreamer</groupId>
+    <artifactId>jsonassert</artifactId>
+    <version>1.5.3</version>
+    <scope>test</scope>
+    <exclusions>
+        <exclusion>
+            <groupId>com.vaadin.external.google</groupId>
+            <artifactId>android-json</artifactId>
+        </exclusion>
+    </exclusions>
+</dependency>
+
+
+
 		<dependency>
 			<groupId>org.springframework.security</groupId>
 			<artifactId>spring-security-test</artifactId>
@@ -107,11 +133,13 @@
     
     <scope>provided</scope>
 </dependency>
-<dependency>
-        <groupId>org.json</groupId>
-        <artifactId>json</artifactId>
-		<version>20240303</version>
-    </dependency>
+		
+        
+        <dependency>
+            <groupId>org.json</groupId>
+            <artifactId>json</artifactId>
+            <version>20240303</version>
+        </dependency>
 	</dependencies>
 
 	<build>

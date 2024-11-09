@@ -12,9 +12,9 @@
 
     <groupId>com.careconnect</groupId>
     <artifactId>careconnect</artifactId>
-    <version>1.0.0</version>
-    <name>careconnect</name>
-    <description>CareConnect Module</description>
+    <!--<version>1.0.0</version>-->
+    <!--<name>careconnect</name>-->
+    <!--<description>CareConnect Module</description>-->
     <packaging>jar</packaging>
 
     <dependencies>
