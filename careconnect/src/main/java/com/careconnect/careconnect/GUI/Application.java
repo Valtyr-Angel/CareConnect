@@ -45,9 +45,9 @@ public class Application {
 
         // Create label and buttons
         JLabel label = new JLabel("Velg en innloggingsmetode:");
-        JButton regularLoginButton = new JButton("Login med brukernavn og passord");
-        JButton ansattkortLoginButton = new JButton("Login med bruk av ansattkort");
-        JButton biometricLoginButton = new JButton("Login med biometric scan");
+        JButton regularLoginButton = new JButton("Login with username and password");
+        JButton ansattkortLoginButton = new JButton("Login with employee card");
+        JButton biometricLoginButton = new JButton("Login with biometric scan");
         JButton exitButton = new JButton("Exit");
 
         // Set preferred size for all buttons
@@ -120,10 +120,10 @@ public class Application {
         passField.setPreferredSize(fieldSize);
 
         JButton loginButton = new JButton("Login");
-        JButton tilbakeButton = new JButton("Tilbake");
+        JButton backButton = new JButton("back");
         Dimension buttonSize = new Dimension(220, 30);
         loginButton.setPreferredSize(buttonSize);
-        tilbakeButton.setPreferredSize(buttonSize);
+        backButton.setPreferredSize(buttonSize);
 
         JLabel messageLabel = new JLabel(""); // For error messages
 
@@ -148,7 +148,7 @@ public class Application {
         panel.add(loginButton, constraints);
 
         constraints.gridy = 3;
-        panel.add(tilbakeButton, constraints);
+        panel.add(backButton, constraints);
 
         constraints.gridy = 4;
         panel.add(messageLabel, constraints);
@@ -169,7 +169,7 @@ public class Application {
             }
         });
 
-        tilbakeButton.addActionListener(new ActionListener() {
+        backButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 cardLayout.show(mainPanel, "LoginMethod");
@@ -188,11 +188,11 @@ public class Application {
         JLabel label = new JLabel("Enter code to proceed:");
         JTextField codeField = new JTextField(10);
         JButton loginButton = new JButton("Login");
-        JButton tilbakeButton = new JButton("Tilbake");
+        JButton backButton = new JButton("Back");
         Dimension fieldSize = new Dimension(220, 30);
         codeField.setPreferredSize(fieldSize);
         loginButton.setPreferredSize(new Dimension(220, 30));
-        tilbakeButton.setPreferredSize(new Dimension(220, 30));
+        backButton.setPreferredSize(new Dimension(220, 30));
 
         // Add components
         constraints.gridx = 0;
@@ -206,7 +206,7 @@ public class Application {
         panel.add(loginButton, constraints);
 
         constraints.gridy = 3;
-        panel.add(tilbakeButton, constraints);
+        panel.add(backButton, constraints);
 
         // ActionListeners
         loginButton.addActionListener(new ActionListener() {
@@ -221,7 +221,7 @@ public class Application {
             }
         });
 
-        tilbakeButton.addActionListener(new ActionListener() {
+        backButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 cardLayout.show(mainPanel, "LoginMethod");
@@ -242,11 +242,11 @@ public class Application {
         JProgressBar progressBar = new JProgressBar();
         progressBar.setIndeterminate(true);
         progressBar.setVisible(false); // Hide progress bar initially
-        JButton tilbakeButton = new JButton("Tilbake");
+        JButton backButton = new JButton("Back");
 
         scanButton.setPreferredSize(new Dimension(220, 30));
         progressBar.setPreferredSize(new Dimension(220, 30));
-        tilbakeButton.setPreferredSize(new Dimension(220, 30));
+        backButton.setPreferredSize(new Dimension(220, 30));
 
         // Add components
         constraints.gridx = 0;
@@ -260,7 +260,7 @@ public class Application {
         panel.add(progressBar, constraints);
 
         constraints.gridy = 3;
-        panel.add(tilbakeButton, constraints);
+        panel.add(backButton, constraints);
 
         // ActionListeners
         scanButton.addActionListener(new ActionListener() {
@@ -280,7 +280,7 @@ public class Application {
             }
         });
 
-        tilbakeButton.addActionListener(new ActionListener() {
+        backButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 cardLayout.show(mainPanel, "LoginMethod");
@@ -354,32 +354,32 @@ public class Application {
         constraints.insets = new Insets(5, 5, 5, 5);
 
         // Journal option buttons
-        JButton scanArmbåndButton = new JButton("Scan Armbånd");
-        JButton brukPasientIDButton = new JButton("Bruk PasientID");
-        JButton tilbakeButton = new JButton("Tilbake");
+        JButton scanBraceletButton = new JButton("Scan Bracelet");
+        JButton brukpatientIDButton = new JButton("Use PatientID");
+        JButton backButton = new JButton("Back");
 
         Dimension buttonSize = new Dimension(220, 30);
-        scanArmbåndButton.setPreferredSize(buttonSize);
-        brukPasientIDButton.setPreferredSize(buttonSize);
-        tilbakeButton.setPreferredSize(buttonSize);
+        scanBraceletButton.setPreferredSize(buttonSize);
+        brukpatientIDButton.setPreferredSize(buttonSize);
+        backButton.setPreferredSize(buttonSize);
 
         // Add components to the panel
         constraints.gridx = 0;
         constraints.gridy = 0;
-        panel.add(scanArmbåndButton, constraints);
+        panel.add(scanBraceletButton, constraints);
 
         constraints.gridy = 1;
-        panel.add(brukPasientIDButton, constraints);
+        panel.add(brukpatientIDButton, constraints);
 
         constraints.gridy = 2;
-        panel.add(tilbakeButton, constraints);
+        panel.add(backButton, constraints);
 
         // ActionListeners
-        scanArmbåndButton.addActionListener(new ActionListener() {
+        scanBraceletButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 // Create a new JFrame for the scan process with a progress bar
-                JFrame scanFrame = new JFrame("Scan Armbånd");
+                JFrame scanFrame = new JFrame("Scan Bracelet");
                 scanFrame.setSize(400, 150);
                 scanFrame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 
@@ -425,27 +425,27 @@ public class Application {
             }
         });
 
-        brukPasientIDButton.addActionListener(new ActionListener() {
+        brukpatientIDButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 // Show a pop-up asking for PasientID (for example, 123)
-                String pasientID = JOptionPane.showInputDialog(panel, "Enter PasientID:");
+                String patientID = JOptionPane.showInputDialog(panel, "Enter PastentID:");
 
                 // Verify if the entered PasientID is 123
-                if (pasientID != null && pasientID.equals("123")) {
+                if (patientID != null && patientID.equals("123")) {
                     // If the ID is valid, call the Journal's method to fetch the data and display it
                     Journal journal = new Journal();
                     journal.performAction();  // This will read from the JSON file and display the patient information
                 } else {
                     // Show an error message if the entered ID is incorrect
-                    JOptionPane.showMessageDialog(panel, "Invalid PasientID.", "Error", JOptionPane.ERROR_MESSAGE);
+                    JOptionPane.showMessageDialog(panel, "Invalid PatientID.", "Error", JOptionPane.ERROR_MESSAGE);
                 }
             }
         });
 
 
 
-        tilbakeButton.addActionListener(new ActionListener() {
+        backButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 cardLayout.show(mainPanel, "MainMenu");
@@ -467,11 +467,11 @@ public class Application {
 
         // Create the buttons and label
         JButton changeStatusButton = new JButton("Change Doorlock Status");
-        JButton tilbakeButton = new JButton("Tilbake");
+        JButton backButton = new JButton("Back");
         JLabel statusLabel = new JLabel("Current Status: " + doorLock.getLockStatus());
 
         changeStatusButton.setPreferredSize(new Dimension(220, 30));
-        tilbakeButton.setPreferredSize(new Dimension(220, 30));
+        backButton.setPreferredSize(new Dimension(220, 30));
 
         // Add components to the door lock panel
         constraints.gridx = 0;
@@ -482,7 +482,7 @@ public class Application {
         doorLockPanel.add(changeStatusButton, constraints);
 
         constraints.gridy = 2;
-        doorLockPanel.add(tilbakeButton, constraints);
+        doorLockPanel.add(backButton, constraints);
 
         // ActionListeners
         changeStatusButton.addActionListener(new ActionListener() {
@@ -499,7 +499,7 @@ public class Application {
             }
         });
 
-        tilbakeButton.addActionListener(new ActionListener() {
+        backButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 doorLockFrame.dispose();  // Close the door lock window
