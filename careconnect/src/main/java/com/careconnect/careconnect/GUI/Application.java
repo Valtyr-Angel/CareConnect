@@ -44,7 +44,7 @@ public class Application {
         Dimension buttonSize = new Dimension(240, 35);
 
         // Create label and buttons
-        JLabel label = new JLabel("Velg en innloggingsmetode:");
+        JLabel label = new JLabel("Choose a login method:");
         JButton regularLoginButton = new JButton("Login with username and password");
         JButton ansattkortLoginButton = new JButton("Login with employee card");
         JButton biometricLoginButton = new JButton("Login with biometric scan");
