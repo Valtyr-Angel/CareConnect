@@ -1,10 +1,16 @@
 package com.careconnect.careconnect.GUI;
+import java.util.ArrayList;
 
-import javax.swing.*;
+import com.careconnect.careconnect.models.patient;
 
 public class Scanner {
-    public void performAction() {
-        System.out.println("Class1 Action: Hello from Class1!");
-        JOptionPane.showMessageDialog(null, "Class1 Action: Hello from Class1!");
+
+    public static patient findPatientById(ArrayList<patient> patients, int id) {
+        for (patient patient : patients) {
+            if (patient.getPatientId() == id) {
+                return patient;
+            }
+        }
+        return null;
     }
 }

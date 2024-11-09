@@ -224,8 +224,8 @@ public class Applikasjon extends JFrame {
             public void actionPerformed(ActionEvent e) {
                 String employeeCardCode = cardField.getText();
 
-                // Check if the card code is "123456"
-                if (employeeCardCode.equals("123456")) {
+                // Check if the card code is "123"
+                if (employeeCardCode.equals("123")) {
                     cardLayout.show(mainPanel, "MainMenu"); // Show main menu on success
                 } else {
                     messageLabel.setText("Invalid employee card code!");
