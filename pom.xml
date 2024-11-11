@@ -17,31 +17,17 @@
 
 
 	<modules>
+		
         <module>careconnect</module>
+		<module>careconnect-application</module>
         <module>careconnect-security</module>
         <!-- Add more modules here -->
     </modules>
 
-
-
 	<name>careconnect</name>
 	<description>Demo project for Spring Boot</description>
 
-
-
-	<url/>
-	<licenses>
-		<license/>
-	</licenses>
-	<developers>
-		<developer/>
-	</developers>
-	<scm>
-		<connection/>
-		<developerConnection/>
-		<tag/>
-		<url/>
-	</scm>
+	
 
 	
 	<properties>
@@ -109,11 +95,29 @@
         <artifactId>json</artifactId>
 		<version>20240303</version>
     </dependency>
+
+	<dependency>
+        <groupId>mysql</groupId>
+        <artifactId>mysql-connector-java</artifactId>
+        <version>8.0.33</version>
+    </dependency>
+
 	</dependencies>
 
 	<build>
 		<plugins>
+			<!-- Maven Compiler Plugin for source and target Java version -->
 			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-compiler-plugin</artifactId>
+				<version>3.8.1</version>
+				<configuration>
+					<source>${java.version}</source>
+					<target>${java.version}</target>
+				</configuration>
+			</plugin>
+            <!-- Spring Boot Maven Plugin is not required in the core module 
+            <plugin>
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-maven-plugin</artifactId>
 				<configuration>
@@ -124,16 +128,8 @@
 						</exclude>
 					</excludes>
 				</configuration>
-			</plugin>
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-compiler-plugin</artifactId>
-                <configuration>
-                    <source>21</source>
-                    <target>21</target>
-                </configuration>
-            </plugin>
-        </plugins>
+			</plugin>-->
+		</plugins>
 	</build>
 
 </project>

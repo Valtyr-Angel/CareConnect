@@ -1,6 +1,6 @@
 package com.careconnect.careconnect.models;
 
-public class patient extends person {
+public class patient extends Person {
     
     private int patientId;
 

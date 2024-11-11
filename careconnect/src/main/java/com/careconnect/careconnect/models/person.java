@@ -1,23 +1,34 @@
 package com.careconnect.careconnect.models;
 
-abstract class person {
+import javax.persistence.MappedSuperclass;
+
+@MappedSuperclass
+public abstract class Person {
     private String firstName;
     private String lastName;
 
-    person(String firstN, String lastN){
-        firstName = firstN;
-        lastName = lastN;
+    public Person(String firstN, String lastN) {
+        this.firstName = firstN;
+        this.lastName = lastN;
     }
-    public void setFirstName(String s){
-        this.firstName = s;
+
+    public Person() {
     }
-    public String getFirstName(){
-        return(this.firstName);
+
+    // Standard getters and setters...
+    public String getFirstName() {
+        return firstName;
     }
-    public void setLastName(String s){
-        this.lastName = s;
+
+    public void setFirstName(String firstName) {
+        this.firstName = firstName;
     }
-    public String getLastName(){
-        return(this.lastName);
+
+    public String getLastName() {
+        return lastName;
+    }
+
+    public void setLastName(String lastName) {
+        this.lastName = lastName;
     }
 }

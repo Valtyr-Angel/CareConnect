@@ -9,9 +9,7 @@
         <version>0.0.1-SNAPSHOT</version>
         <relativePath>../pom.xml</relativePath> <!-- Ensure this path correctly points to the parent POM -->
     </parent>
-
-    <artifactId>careconnect-core</artifactId>
-
+    <artifactId>careconnect</artifactId>
     <name>careconnect</name>
     <description>CareConnect Module</description>
 
@@ -23,6 +21,35 @@
             <artifactId>spring-boot-starter-web</artifactId>
         </dependency>
         <!-- Add more module-specific dependencies if needed -->
+        <dependency>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-starter-data-jpa</artifactId>
+    </dependency>
+    <dependency>
+    <groupId>javax.persistence</groupId>
+    <artifactId>javax.persistence-api</artifactId>
+    <version>2.2</version>
+</dependency>
+
+    
+    <dependency>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-starter-security</artifactId>
+    </dependency>
+    <dependency>
+        <groupId>mysql</groupId>
+        <artifactId>mysql-connector-java</artifactId>
+        <version>8.0.33</version>
+    </dependency>
+    <dependency>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-starter-test</artifactId>
+        <scope>test</scope>
+    </dependency>
+
+
+
+
     </dependencies>
 
     <build>

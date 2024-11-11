@@ -7,10 +7,13 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.test.context.ContextConfiguration;
 
+import com.careconnect.careconnect.config.TestConfigIot;
 import com.careconnect.careconnect.models.FunctionalIoTDevice;
 
 @SpringBootTest
+@ContextConfiguration(classes = TestConfigIot.class)
 public class FunctionalIoTDeviceTest {
 
     @Autowired

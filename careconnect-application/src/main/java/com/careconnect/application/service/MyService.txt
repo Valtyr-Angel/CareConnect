@@ -1,0 +1,11 @@
+
+package careconnect.application.service;
+
+import org.springframework.stereotype.Service;
+
+@Service
+public class MyService {
+    public void performService() {
+        System.out.println("Service is performed");
+    }
+}
