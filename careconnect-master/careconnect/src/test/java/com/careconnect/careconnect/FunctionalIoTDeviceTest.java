@@ -1,6 +1,7 @@
 package com.careconnect.careconnect;
 
 
+
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
@@ -10,14 +11,15 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.ContextConfiguration;
 
 import com.careconnect.careconnect.config.TestConfigIot;
-import com.careconnect.careconnect.models.FunctionalIoTDevice;
+import com.careconnect.careconnect.models.IoTDevice;
+
 
 @SpringBootTest
 @ContextConfiguration(classes = TestConfigIot.class)
 public class FunctionalIoTDeviceTest {
 
     @Autowired
-    private FunctionalIoTDevice device;
+    private IoTDevice device;
 
     @Test
     public void testTurnOnDevice() {
