@@ -1,6 +1,8 @@
 package com.careconnect.careconnect.service;
 import java.util.List;
 
+import com.careconnect.careconnect.exceptions.DeviceNotFoundException;
+import com.careconnect.careconnect.exceptions.InvalidDeviceDataException;
 import com.careconnect.careconnect.models.IoTDevice;
 import com.careconnect.careconnect.ports.IoTDevicePort;
 
@@ -29,7 +31,11 @@ public class IoTDeviceService {
     }
 
     public IoTDevice getDeviceById(String id) {
-        return ioTDevicePort.getDeviceById(id);  // Bruker IoTDevice som DTO
+        IoTDevice device = ioTDevicePort.getDeviceById(id);
+        if (device == null) {
+            throw new DeviceNotFoundException(id);
+        }
+        return device;
     }
 
     public List<IoTDevice> getAllDevices() {
@@ -37,10 +43,17 @@ public class IoTDeviceService {
     }
 
     public void createDevice(IoTDevice device) {
-        ioTDevicePort.createDevice(device);  // Bruker IoTDevice som DTO, sikker at det er DTO?
+        if (device == null || device.getDeviceId() == null || device.getDeviceName().isEmpty()) {
+            throw new InvalidDeviceDataException("Device ID og navn kan ikke være tomme.");
+        }
+        ioTDevicePort.createDevice(device);
     }
 
     public void updateDeviceStatus(String id, String newStatus) {
+        IoTDevice device = ioTDevicePort.getDeviceById(id);
+        if (device == null) {
+            throw new DeviceNotFoundException(id);
+        }
         ioTDevicePort.updateDeviceStatus(id, newStatus);
     }
 }
