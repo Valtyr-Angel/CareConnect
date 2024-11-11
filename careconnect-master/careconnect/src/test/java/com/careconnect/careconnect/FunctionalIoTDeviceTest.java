@@ -1,4 +1,6 @@
 package com.careconnect.careconnect;
+import com.careconnect.careconnect.models.FunctionalIoTDevice;
+import com.careconnect.careconnect.config.TestConfigIot;
 
 
 
@@ -10,8 +12,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.ContextConfiguration;
 
-import com.careconnect.careconnect.config.TestConfigIot;
-import com.careconnect.careconnect.models.IoTDevice;
 
 
 @SpringBootTest
@@ -19,7 +19,7 @@ import com.careconnect.careconnect.models.IoTDevice;
 public class FunctionalIoTDeviceTest {
 
     @Autowired
-    private IoTDevice device;
+    private FunctionalIoTDevice device;
 
     @Test
     public void testTurnOnDevice() {
