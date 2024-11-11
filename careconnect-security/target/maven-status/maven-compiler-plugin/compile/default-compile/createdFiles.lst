@@ -1,4 +1,0 @@
-com\careconnect\security\config\ThymeleafConfig.class
-com\careconnect\security\service\ApplicationUserDetailsService.class
-com\careconnect\security\config\SecurityConfig.class
-com\careconnect\security\handler\CustomAuthenticationSuccessHandler.class

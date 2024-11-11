@@ -6,7 +6,7 @@
 		<groupId>org.springframework.boot</groupId>
 		<artifactId>spring-boot-starter-parent</artifactId>
 		<version>3.3.4</version>
-		<relativePath/> <!-- lookup parent from repository -->
+		<relativePath>../pom.xml</relativePath>
 	</parent>
     
 	<groupId>careconnect</groupId>
@@ -17,12 +17,10 @@
 
 
 	<modules>
-		
-        <module>careconnect</module>
+		<module>careconnect</module>
 		<module>careconnect-application</module>
-        <module>careconnect-security</module>
-        <!-- Add more modules here -->
-    </modules>
+		<module>careconnect-security</module>
+	</modules>
 
 	<name>careconnect</name>
 	<description>Demo project for Spring Boot</description>

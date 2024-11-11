@@ -9,6 +9,26 @@
             "projectName": "careconnect",
             "args": "",
             "envFile": "${workspaceFolder}/.env"
+        },
+        {
+            "type": "java",
+            "name": "Spring Boot-Application<careconnect-application>",
+            "request": "launch",
+            "cwd": "${workspaceFolder}",
+            "mainClass": "com.careconnect.application.Application",
+            "projectName": "careconnect-application",
+            "args": "",
+            "envFile": "${workspaceFolder}/.env"
+        },
+        {
+            "type": "java",
+            "name": "Spring Boot-CareconnectSecurity<careconnect-security>",
+            "request": "launch",
+            "cwd": "${workspaceFolder}",
+            "mainClass": "com.careconnect.security.CareconnectSecurity",
+            "projectName": "careconnect-security",
+            "args": "",
+            "envFile": "${workspaceFolder}/.env"
         }
     ]
 }
