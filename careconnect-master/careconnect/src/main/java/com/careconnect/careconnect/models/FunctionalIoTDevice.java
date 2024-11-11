@@ -1,6 +1,8 @@
 package com.careconnect.careconnect.models;
 
 import org.springframework.stereotype.Component;
+import org.springframework.beans.factory.annotation.Autowired;
+
 
 @Component
 public class FunctionalIoTDevice extends IoTDevice {
@@ -13,6 +15,7 @@ public class FunctionalIoTDevice extends IoTDevice {
     }
 
     // Default constructor for Spring
+    @Autowired
     public FunctionalIoTDevice() {
         super();
         this.isOn = false;
