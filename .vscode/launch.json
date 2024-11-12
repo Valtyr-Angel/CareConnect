@@ -2,6 +2,13 @@
     "configurations": [
         {
             "type": "java",
+            "name": "Application",
+            "request": "launch",
+            "mainClass": "com.careconnect.application.Application",
+            "projectName": "careconnect-application"
+        },
+        {
+            "type": "java",
             "name": "Applikasjon",
             "request": "launch",
             "mainClass": "com.careconnect.careconnect.GUI.Applikasjon",
