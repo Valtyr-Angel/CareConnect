@@ -1,9 +1,10 @@
 package com.careconnect.careconnect.models;
 
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Component;
+import javax.persistence.Entity;
 
-@Component
+import org.springframework.beans.factory.annotation.Autowired;
+
+@Entity
 public class IoTDevice {
     private String deviceId;
     private String deviceName;
