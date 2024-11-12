@@ -21,16 +21,27 @@ public class CustomAuthenticationSuccessHandler implements AuthenticationSuccess
 
     @Override
     public void onAuthenticationSuccess(HttpServletRequest request, HttpServletResponse response, Authentication authentication) throws IOException, ServletException {
-        Set<String> roles = AuthorityUtils.authorityListToSet(authentication.getAuthorities());
-        logger.info("Authentication successful for user: {}", authentication.getName());
-        logger.info("Roles: {}", roles);
+        // Log the successful authentication event
+        logger.info("User '{}' has logged in successfully.", authentication.getName());
 
+        // Log the authorities granted to the user
+        Set<String> roles = AuthorityUtils.authorityListToSet(authentication.getAuthorities());
+        logger.info("User '{}' has roles: {}", authentication.getName(), roles);
+
+        // Determine target URL based on roles
+        String targetUrl;
         if (roles.contains("ROLE_ADMIN")) {
-            response.sendRedirect("/admin");
+            targetUrl = "/admin";
         } else if (roles.contains("ROLE_USER")) {
-            response.sendRedirect("/user");
+            targetUrl = "/user";
         } else {
-            response.sendRedirect("/");
+            targetUrl = "/";
         }
+
+        // Log the target URL
+        logger.info("Redirecting user '{}' to '{}'", authentication.getName(), targetUrl);
+
+        // Perform the redirection
+        response.sendRedirect(request.getContextPath() + targetUrl);
     }
 }
