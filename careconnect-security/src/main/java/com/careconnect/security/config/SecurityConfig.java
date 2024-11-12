@@ -43,12 +43,13 @@ public class SecurityConfig {
             http
                 .csrf().disable()
                 .authorizeRequests(authorizeRequests ->
-                    authorizeRequests
-                            //.requestMatchers( "/resources/**").permitAll()
-                            .requestMatchers("/login", "/resources/**", "/static/**", "/css/**", "/js/**").permitAll()
-                        .requestMatchers("/admin/**").hasRole("ADMIN")
-                        .requestMatchers("/user/**").hasRole("USER")
-                        .anyRequest().authenticated()
+                authorizeRequests
+                .requestMatchers("/login", "/error", "/resources/**", "/static/**", "/css/**", "/js/**", 
+                         "/application/static/**","/application/resources/**",
+                         "/application/css/**","/application/templates/**").permitAll()
+                .requestMatchers("/admin/**").hasRole("ADMIN")
+                .requestMatchers("/user/**").hasRole("USER")
+                .anyRequest().authenticated()
                 )
                 .formLogin(formLogin ->
                     formLogin
