@@ -6,9 +6,8 @@ public class doctor extends User {
     
     private ArrayList<Integer> assignedPatients = new ArrayList<>();
 
-    public doctor(String firstName, String lastName, Long userId, String username, String password, String role){
+    public doctor(String firstName, String lastName, Long userId, String username, String password, String role) {
         super(firstName, lastName, userId,username, password, role);
-
     }
     public void addAssignedPatient(Object patientId) {
         if (patientId instanceof Integer) {
