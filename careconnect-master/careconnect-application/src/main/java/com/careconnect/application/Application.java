@@ -5,7 +5,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.autoconfigure.domain.EntityScan;
 import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 
-@SpringBootApplication(scanBasePackages = "com.careconnect.careconnect")
+@SpringBootApplication(scanBasePackages = "com.careconnect.application")
 @EntityScan(basePackages = "com.careconnect.careconnect.models")
 @EnableJpaRepositories(basePackages = "com.careconnect.careconnect.repository")
 public class Application {
