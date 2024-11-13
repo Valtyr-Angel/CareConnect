@@ -3,14 +3,14 @@ package com.careconnect.careconnect.models;
 import org.springframework.stereotype.Component;
 
 @Component
-public class iotDevice {
+public class IoTdevice {
     private String deviceId;
     private String deviceName;
     private String location;
     private String status;
 
     // Constructor
-    public iotDevice(String deviceId, String deviceName, String location, String status) {
+    public IoTdevice(String deviceId, String deviceName, String location, String status) {
         this.deviceId = deviceId;
         this.deviceName = deviceName;
         this.location = location;
@@ -18,7 +18,7 @@ public class iotDevice {
     }
 
     // Default constructor for Spring
-    public iotDevice() {}
+    public IoTdevice() {}
 
     // Getters and Setters
     public String getDeviceId() {

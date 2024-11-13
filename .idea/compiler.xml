@@ -7,12 +7,25 @@
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
         <module name="careconnect" />
+        <module name="careconnect-security" />
+        <module name="careconnect-core" />
+        <module name="careconnect-application" />
       </profile>
     </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="IoT" target="21" />
+      <module name="Persons" target="21" />
+    </bytecodeTargetLevel>
   </component>
   <component name="JavacSettings">
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
+      <module name="IoT" options="-parameters" />
+      <module name="Persons" options="-parameters" />
       <module name="careconnect" options="-parameters" />
+      <module name="careconnect-application" options="-parameters" />
+      <module name="careconnect-core" options="-parameters" />
+      <module name="careconnect-parent" options="-parameters" />
+      <module name="careconnect-security" options="-parameters" />
     </option>
   </component>
 </project>
