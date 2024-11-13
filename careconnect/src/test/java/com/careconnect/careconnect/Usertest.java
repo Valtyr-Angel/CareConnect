@@ -22,7 +22,7 @@ public class Usertest{
 
         assertEquals(expectedFirstName, user.getFirstName());
         assertEquals(expectedLastName, user.getLastName());
-        assertEquals(expectedId, user.getId());
+        assertEquals(expectedId, user.getUserId());
         assertEquals(expectedUsername, user.getUsername());
         assertEquals(expectedPassword, user.getPassword());
         assertEquals(expectedRole, user.getRole());

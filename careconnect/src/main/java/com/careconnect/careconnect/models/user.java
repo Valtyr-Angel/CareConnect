@@ -44,7 +44,9 @@ public class User extends person implements UserDetails {
     public String getUsername() {
         return username;
     }
-
+    public Long getUserId(){
+        return userId;
+    }
     public void setUsername(String username) {
         this.username = username;
     }
