@@ -70,12 +70,17 @@ public class User extends Person implements UserDetails {
         this.role = role;
     }
 
+
+    // nedforliggende atributter er lenket sammen med spring boots egen User/ Userdetails, 
+    // er attributter nyttige i databasedrift med aktivering og lockout av brukere
+    // ikke noe vi vil bruker per dags dato
+
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
         return Collections.singleton(new SimpleGrantedAuthority(role));
     }
 
-    // Other overridden methods for UserDetails
+    
 
     @Override
     public boolean isAccountNonExpired() {

@@ -15,6 +15,7 @@ import org.springframework.security.web.SecurityFilterChain;
 
 import com.careconnect.security.handler.CustomAuthenticationSuccessHandler;
 
+//hovedklassen som tar for seg innlogging, klassen behandler http request og redirigerer bruker til riktig endepunkt med bruk av controllers
 
 
 
@@ -27,14 +28,14 @@ public class SecurityConfig {
     public AuthenticationManager authenticationManager(AuthenticationConfiguration authenticationConfiguration) throws Exception {
         return authenticationConfiguration.getAuthenticationManager();
     }
-    
     @Bean
     public PasswordEncoder passwordEncoder() {
     return new BCryptPasswordEncoder();
 }
 
 
-    
+// securityfilterchain klassen tar imot http requests, gir alle brukere tilgang til nettressurser, 
+//blokkerer tilgang til beskyttede endepunkt ( her /admin og /user, som krever autentisering for tilgang)
         @SuppressWarnings({ "deprecation", "removal" })
         @Bean
         public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
@@ -52,6 +53,7 @@ public class SecurityConfig {
            .requestMatchers("/user/**").hasRole("USER")
            .anyRequest().authenticated()
    )
+   // formlogin, selve funksjonen for å kunne logge inn, har her også customAuthenticationSuccessHandler, beskrevet nærmere i egen klasse
                 .formLogin(formLogin ->
                     formLogin
                         .loginPage("/login")
@@ -64,7 +66,8 @@ public class SecurityConfig {
                 );
             return http.build();
         }
-    
+    // for enkel tilgang har vi hardkodet brukerdetaljer for testing og ikke fokus på mer innloggingsfunksjonalitet
+    //her er oppgaven for neste team å implementere sjekking mot DB, salting etc.
         @Bean
         public UserDetailsService userDetailsService(PasswordEncoder passwordEncoder) {
             InMemoryUserDetailsManager manager = new InMemoryUserDetailsManager();
@@ -79,8 +82,6 @@ public class SecurityConfig {
                 .build());
         return manager;
     }
-
-
 
     @Bean
     public CustomAuthenticationSuccessHandler customAuthenticationSuccessHandler() {
