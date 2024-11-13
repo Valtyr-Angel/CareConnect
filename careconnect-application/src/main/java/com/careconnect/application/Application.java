@@ -10,6 +10,7 @@ import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 @SpringBootApplication(scanBasePackages = "com.careconnect.careconnect")
 @EntityScan(basePackages = "com.careconnect.careconnect.models")
 @EnableJpaRepositories(basePackages = "com.careconnect.careconnect.repository")
+
 public class Application {
     public static void main(String[] args) {
         SpringApplication.run(Application.class, args);
