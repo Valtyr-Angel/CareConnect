@@ -42,11 +42,13 @@
             <artifactId>jakarta.persistence-api</artifactId>
         </dependency>
 
+
     </dependencies>
 
     <build>
         <plugins>
             <!-- Inherit common plugins from the parent POM, add any additional module-specific plugins here -->
+
         </plugins>
     </build>
 </project>
