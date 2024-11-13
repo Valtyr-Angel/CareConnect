@@ -86,8 +86,5 @@ public class SecurityConfig {
     @Bean
     public CustomAuthenticationSuccessHandler customAuthenticationSuccessHandler() {
         return new CustomAuthenticationSuccessHandler();
-    }
-
-    
-    
+    } 
 }
