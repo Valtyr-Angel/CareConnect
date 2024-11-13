@@ -24,7 +24,7 @@ public class Journal {
     }
 
     public void performAction() {
-        String jsonFile = "com/careconnect/careconnect/GUI/pasientInfo.json";
+        String jsonFile = "C:\\Users\\eivin\\OneDrive\\Documents\\GitHub\\CareConnect\\careconnect\\src\\main\\java\\com\\careconnect\\careconnect\\GUI\\pasientInfo.json";
 
         try {
             // Read JSON data from the file and update patients
