@@ -12,8 +12,13 @@ public class JsonFileController {
 
     @GetMapping("/api/patientInfo")
     public String getPatientInfo() throws IOException {
+        // Dette er linjen som leser JSON-filen
         ClassPathResource resource = new ClassPathResource("pasientInfo.json");
+
+        // Kopier filens innhold til en byte-array
         byte[] bdata = FileCopyUtils.copyToByteArray(resource.getInputStream());
+
+        // Konverter byte-array til en String og returner den
         return new String(bdata, StandardCharsets.UTF_8);
     }
 }

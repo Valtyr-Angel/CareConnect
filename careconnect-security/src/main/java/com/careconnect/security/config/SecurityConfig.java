@@ -33,13 +33,13 @@ public class SecurityConfig {
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         http
-                .csrf().disable()
-                .authorizeRequests(authorizeRequests ->
+                .csrf(csrf -> csrf.disable())
+                .authorizeHttpRequests(authorizeRequests ->
                         authorizeRequests
                                 .requestMatchers(
                                         "/application/static/**", "/application/resources/**",
                                         "/application/css/**", "/application/templates/**",
-                                        "/api/jsonfile" // Add your public endpoint here
+                                        "/api/jsonfile", "/api/patientInfo" // Legg til ditt API-endepunkt her
                                 ).permitAll()
                                 .requestMatchers("/admin/**").hasRole("ADMIN")
                                 .requestMatchers("/user/**").hasRole("USER")
@@ -56,6 +56,7 @@ public class SecurityConfig {
                 );
         return http.build();
     }
+
 
     @Bean
     public UserDetailsService userDetailsService(PasswordEncoder passwordEncoder) {
