@@ -1,21 +1,27 @@
 package com.careconnect.careconnect.config;
+
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Profile;
+import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
+import org.springframework.boot.autoconfigure.domain.EntityScan;
+
+import javax.sql.DataSource;
 import org.springframework.jdbc.datasource.DriverManagerDataSource;
 import org.springframework.orm.jpa.JpaTransactionManager;
 import org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean;
 import org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter;
 
-import javax.sql.DataSource;
 import java.util.Properties;
 
 @Configuration
 @EnableAutoConfiguration
-@Profile("test") // Konfigurasjonen brukes kun når "test"-profilen er aktiv
-@ComponentScan(basePackages = {"com.careconnect.careconnect"})
+@Profile("test")
+@EnableJpaRepositories(basePackages = "com.careconnect.careconnect.repository") // Ensures repositories are scanned
+@EntityScan(basePackages = "com.careconnect.careconnect.models") // Ensures entities are scanned
+@ComponentScan(basePackages = "com.careconnect.careconnect") // Ensure all components are scanned
 public class TestConfigUserRepo {
 
     @Bean
@@ -32,15 +38,15 @@ public class TestConfigUserRepo {
     public LocalContainerEntityManagerFactoryBean entityManagerFactory() {
         LocalContainerEntityManagerFactoryBean em = new LocalContainerEntityManagerFactoryBean();
         em.setDataSource(dataSource());
-        em.setPackagesToScan("com.careconnect.careconnect.models"); // Sett riktig pakke for dine entiteter
+        em.setPackagesToScan("com.careconnect.careconnect.models"); // Ensures the correct entity package is scanned
 
         HibernateJpaVendorAdapter vendorAdapter = new HibernateJpaVendorAdapter();
         em.setJpaVendorAdapter(vendorAdapter);
 
         Properties properties = new Properties();
-        properties.setProperty("hibernate.hbm2ddl.auto", "create-drop"); // Oppretter og sletter databasen mellom tester
+        properties.setProperty("hibernate.hbm2ddl.auto", "create-drop");
         properties.setProperty("hibernate.dialect", "org.hibernate.dialect.H2Dialect");
-        properties.setProperty("hibernate.show_sql", "true"); // Valgfritt: Viser SQL i konsollen for debugging
+        properties.setProperty("hibernate.show_sql", "true");
 
         em.setJpaProperties(properties);
         return em;
@@ -53,4 +59,3 @@ public class TestConfigUserRepo {
         return transactionManager;
     }
 }
-

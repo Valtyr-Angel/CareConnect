@@ -17,23 +17,19 @@ import org.springframework.security.core.userdetails.UserDetails;
 public class User extends person implements UserDetails {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long userId;
-
-    @Column(unique = true, nullable = false)
+    
+    private String firstName;
+    private String lastName;
     private String username;
-
-    @Column(nullable = false)
-    private String userPassword;
-
-    @Column(nullable = false)
+    private String password;
     private String role;
 
 
     public User(String firstName, String lastName, Long userId, String username, String password, String role) {
         super(firstName, lastName);
         this.username = username;
-        this.userPassword = password;
+        this.password = password;
         this.role = role;
         this.userId = userId;
     }
@@ -53,11 +49,11 @@ public class User extends person implements UserDetails {
 
     @Override
     public String getPassword() {
-        return userPassword;
+        return password;
     }
 
     public void setPassword(String userPassword) {
-        this.userPassword = userPassword;
+        this.password = userPassword;
     }
 
     public String getRole() {

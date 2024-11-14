@@ -1,22 +1,21 @@
 package com.careconnect.careconnect;
 
+import org.junit.jupiter.api.Test;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.test.context.ContextConfiguration;
+import org.springframework.test.context.ActiveProfiles;
+
+import com.careconnect.careconnect.config.TestConfigUserRepo; // Import your test config
+import com.careconnect.careconnect.repository.UserRepository;
+import com.careconnect.careconnect.models.User;
+
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 
-import org.junit.jupiter.api.Test;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
-import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.test.context.ActiveProfiles;
-import org.springframework.test.context.ContextConfiguration;
-
-import com.careconnect.careconnect.config.TestConfigUserRepo;
-import com.careconnect.careconnect.models.User;
-import com.careconnect.careconnect.repository.UserRepository;
-
-@ContextConfiguration(classes = TestConfigUserRepo.class)
 @SpringBootTest
 @ActiveProfiles("test")
+@ContextConfiguration(classes = TestConfigUserRepo.class)
 public class UserRepositoryTest {
 
     @Autowired
@@ -38,4 +37,3 @@ public class UserRepositoryTest {
         assertEquals("USER", foundUser.getRole());
     }
 }
-
