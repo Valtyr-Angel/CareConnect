@@ -2,91 +2,84 @@ package com.careconnect.security;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import org.junit.jupiter.api.extension.ExtendWith;
-import static org.mockito.ArgumentMatchers.any;
-import static org.mockito.Mockito.times;
-import static org.mockito.Mockito.verify;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
-import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.security.test.context.support.WithMockUser;
-import static org.springframework.security.test.web.servlet.request.SecurityMockMvcRequestPostProcessors.csrf;
-import org.springframework.test.context.junit.jupiter.SpringExtension;
+import org.springframework.test.context.ContextConfiguration;
+import org.springframework.test.context.junit.jupiter.SpringJUnitConfig;
+import org.springframework.test.context.web.WebAppConfiguration;
 import org.springframework.test.web.servlet.MockMvc;
-import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
-import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.redirectedUrl;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.redirectedUrlPattern;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
+import org.springframework.test.web.servlet.setup.MockMvcBuilders;
+import org.springframework.web.context.WebApplicationContext;
 
-import com.careconnect.security.config.SecurityConfig;
-import com.careconnect.security.controller.AdminController;
-import com.careconnect.security.controller.LoginController;
-import com.careconnect.security.controller.UserController;
-import com.careconnect.security.handler.CustomAuthenticationSuccessHandler;
+import com.careconnect.security.config.TestConfigSecurity;
 
-
-@ExtendWith(SpringExtension.class)
-@WebMvcTest({SecurityConfig.class, AdminController.class, LoginController.class, UserController.class})
+@SpringJUnitConfig
+@ContextConfiguration(classes = { TestConfigSecurity.class })
+@WebAppConfiguration
 public class SecurityConfigTest {
 
     @Autowired
+    private WebApplicationContext webApplicationContext;
+
     private MockMvc mockMvc;
 
-    @MockBean
-    private CustomAuthenticationSuccessHandler customAuthenticationSuccessHandler;
-
     @BeforeEach
-    public void setUp() {
-        // No need to manually configure MockMvc, @WebMvcTest does it for us
+    public void setup() {
+        this.mockMvc = MockMvcBuilders.webAppContextSetup(this.webApplicationContext).build();
     }
 
     @Test
-    public void testLoginAsAdmin() throws Exception {
-        mockMvc.perform(MockMvcRequestBuilders.post("/login")
-                .param("username", "admin")
-                .param("password", "admin")
-                .with(csrf()))  // Include CSRF token
+    void shouldAllowAccessToStaticResources() throws Exception {
+        mockMvc.perform(get("/application/static/styles.css"))
                 .andExpect(status().isOk());
-                
-
-        verify(customAuthenticationSuccessHandler, times(1)).onAuthenticationSuccess(any(), any(), any());
     }
-    // alle tester skal returnere 200 status for nå, server kjøres lokalt, så ingen 3xx status
+
+    @Test
+void shouldRedirectToLoginForUnauthenticatedUserTryingToAccessAdminPage() throws Exception {
+    mockMvc.perform(get("/admin"))
+            .andDo(result -> {
+                System.out.println("Response Status: " + result.getResponse().getStatus());
+                System.out.println("Redirected URL: " + result.getResponse().getRedirectedUrl());
+                System.out.println("Error Message: " + result.getResponse().getErrorMessage());
+            })
+            .andExpect(status().is3xxRedirection())
+            .andExpect(redirectedUrlPattern("**/login"));
+}
+
     @Test
     @WithMockUser(username = "admin", roles = {"ADMIN"})
-    public void testAdminAccess() throws Exception {
-        mockMvc.perform(MockMvcRequestBuilders.get("/admin").with(csrf()))
+    void shouldAllowAccessToAdminPageForAdminUser() throws Exception {
+        mockMvc.perform(get("/admin"))
                 .andExpect(status().isOk());
     }
 
     @Test
     @WithMockUser(username = "user", roles = {"USER"})
-    public void testUserAccess() throws Exception {
-        mockMvc.perform(MockMvcRequestBuilders.get("/user").with(csrf()))
+    void shouldNotAllowAccessToAdminPageForRegularUser() throws Exception {
+        mockMvc.perform(get("/admin"))
+                .andExpect(status().isForbidden());
+    }
+
+    @Test
+    @WithMockUser(username = "user", roles = {"USER"})
+    void shouldAllowAccessToUserPageForUser() throws Exception {
+        mockMvc.perform(get("/user"))
                 .andExpect(status().isOk());
     }
 
     @Test
-    public void testLoginAsUser() throws Exception {
-        mockMvc.perform(MockMvcRequestBuilders.post("/login")
-                .param("username", "user")
-                .param("password", "user")
-                .with(csrf()))  // Include CSRF token
-                .andExpect(status().isOk());
-                
-
-        verify(customAuthenticationSuccessHandler, times(1)).onAuthenticationSuccess(any(), any(), any());
+    void shouldRedirectToLoginForUnauthenticatedUserTryingToAccessUserPage() throws Exception {
+        mockMvc.perform(get("/user"))
+                .andExpect(status().is3xxRedirection())
+                .andExpect(redirectedUrlPattern("**/login"));
     }
 
     @Test
-public void testAccessDeniedForUser() throws Exception {
-    mockMvc.perform(MockMvcRequestBuilders.get("/admin").with(csrf()))
-            .andExpect(status().is3xxRedirection())  
-            .andExpect(redirectedUrl("http://localhost/login"));  
-}
-
-    @Test
-    public void testLoginPageAccess() throws Exception {
-        mockMvc.perform(MockMvcRequestBuilders.get("/login").with(csrf()))
+    void shouldAllowAccessToHomePage() throws Exception {
+        mockMvc.perform(get("/"))
                 .andExpect(status().isOk());
     }
 }

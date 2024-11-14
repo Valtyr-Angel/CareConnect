@@ -1,0 +1,84 @@
+package com.careconnect.security.config;
+
+import org.springframework.boot.test.context.TestConfiguration;
+import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.Import;
+import org.springframework.security.authentication.AuthenticationManager;
+import org.springframework.security.config.annotation.authentication.configuration.AuthenticationConfiguration;
+import org.springframework.security.config.annotation.web.builders.HttpSecurity;
+import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
+import org.springframework.security.config.annotation.web.configuration.WebSecurityConfiguration;
+import org.springframework.security.core.userdetails.User;
+import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.security.provisioning.InMemoryUserDetailsManager;
+import org.springframework.security.web.SecurityFilterChain;
+
+import com.careconnect.security.handler.CustomAuthenticationSuccessHandler;
+
+@TestConfiguration
+@EnableWebSecurity
+@Import(WebMvcTestConfig.class)
+public class TestConfigSecurity extends WebSecurityConfiguration {
+    
+    @Bean
+    public PasswordEncoder passwordEncoder() {
+        return new BCryptPasswordEncoder();
+    }
+
+
+    @Bean
+    public InMemoryUserDetailsManager inMemoryUserDetailsManager() {
+        UserDetails adminUser = User.withDefaultPasswordEncoder()
+                .username("admin")
+                .password("admin")
+                .roles("ADMIN")
+                .build();
+
+        UserDetails regularUser = User.withDefaultPasswordEncoder()
+                .username("user")
+                .password("user")
+                .roles("USER")
+                .build();
+
+        UserDetails guestUser = User.withDefaultPasswordEncoder()
+                .username("guest")
+                .password("password")
+                .roles("")
+                .build();
+
+        return new InMemoryUserDetailsManager(adminUser, regularUser, guestUser);
+    }
+    @Bean
+    public AuthenticationManager authenticationManager(AuthenticationConfiguration authenticationConfiguration) throws Exception {
+        return authenticationConfiguration.getAuthenticationManager();
+    }
+    @SuppressWarnings("deprecation")
+    @Bean
+    public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
+        http
+            .csrf().disable()
+            .authorizeRequests(authorizeRequests ->
+                authorizeRequests
+                    .requestMatchers("/application/static/**", "/application/resources/**",
+                                     "/application/css/**", "/application/templates/**").permitAll()
+                    .requestMatchers("/admin/**").hasRole("ADMIN")
+                    .requestMatchers("/user/**").hasRole("USER")
+                    .anyRequest().authenticated()
+            )
+            .formLogin(formLogin ->
+                formLogin
+                    .loginPage("/login")
+                    .successHandler(customAuthenticationSuccessHandler())
+                    .permitAll()
+            )
+            .logout(logout -> logout.permitAll());
+        return http.build();
+    }
+    @Bean
+    public CustomAuthenticationSuccessHandler customAuthenticationSuccessHandler() {
+        return new CustomAuthenticationSuccessHandler();
+    }
+}

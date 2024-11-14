@@ -1,0 +1,47 @@
+package com.careconnect.security;
+
+
+
+
+import static org.junit.jupiter.api.Assertions.assertNotNull;
+import org.junit.jupiter.api.Test;
+import static org.mockito.Mockito.mock;
+import org.springframework.security.config.annotation.authentication.configuration.AuthenticationConfiguration;
+import org.springframework.security.config.annotation.web.builders.HttpSecurity;
+import org.springframework.security.core.userdetails.UserDetailsService;
+import org.springframework.security.web.SecurityFilterChain;
+
+import com.careconnect.security.config.SecurityConfig;
+
+class SecurityConfigTest {
+    private final SecurityConfig securityConfig = new SecurityConfig();
+    private final AuthenticationConfiguration authenticationConfiguration = mock(AuthenticationConfiguration.class);
+
+    @Test
+    void testAuthenticationManagerBean() throws Exception {
+        assertNotNull(securityConfig.authenticationManager(authenticationConfiguration));
+    }
+
+    @Test
+    void testPasswordEncoderBean() {
+        assertNotNull(securityConfig.passwordEncoder());
+    }
+
+    @Test
+    void testSecurityFilterChainBean() throws Exception {
+        HttpSecurity httpSecurity = mock(HttpSecurity.class);
+        SecurityFilterChain filterChain = securityConfig.securityFilterChain(httpSecurity);
+        assertNotNull(filterChain);
+    }
+
+    @Test
+    void testUserDetailsServiceBean() {
+        UserDetailsService userDetailsService = securityConfig.userDetailsService(securityConfig.passwordEncoder());
+        assertNotNull(userDetailsService);
+    }
+
+    @Test
+    void testCustomAuthenticationSuccessHandlerBean() {
+        assertNotNull(securityConfig.customAuthenticationSuccessHandler());
+    }
+}
