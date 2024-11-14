@@ -1,7 +1,8 @@
-package com.careconnect.careconnect.GUI;
+package com.careconnect.careconnect.controller;
 
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.core.io.ClassPathResource;
 import org.springframework.util.FileCopyUtils;
 import java.io.IOException;

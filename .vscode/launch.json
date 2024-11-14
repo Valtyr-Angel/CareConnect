@@ -23,6 +23,16 @@
             "projectName": "careconnect",
             "args": "",
             "envFile": "${workspaceFolder}/.env"
+        },
+        {
+            "type": "java",
+            "name": "Spring Boot-Application<careconnect>",
+            "request": "launch",
+            "cwd": "${workspaceFolder}",
+            "mainClass": "com.careconnect.careconnect.GUI.Application",
+            "projectName": "careconnect",
+            "args": "",
+            "envFile": "${workspaceFolder}/.env"
         }
     ]
 }

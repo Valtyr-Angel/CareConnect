@@ -1,4 +1,4 @@
-com\careconnect\security\service\AuthenticationService.class
-com\careconnect\security\config\SecurityConfig.class
-com\careconnect\security\service\implementation\AuthenticationServiceImplementation.class
-com\careconnect\security\handler\CustomAuthenticationSuccessHandler.class
+com/careconnect/security/handler/CustomAuthenticationSuccessHandler.class
+com/careconnect/security/config/SecurityConfig.class
+com/careconnect/security/service/AuthenticationService.class
+com/careconnect/security/service/implementation/AuthenticationServiceImplementation.class
