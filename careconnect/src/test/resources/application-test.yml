@@ -1,0 +1,23 @@
+# application-test.yml
+spring:
+  datasource:
+    url: jdbc:h2:mem:testdb;DB_CLOSE_DELAY=-1
+    driver-class-name: org.h2.Driver
+    username: sa
+    password: password
+  jpa:
+    hibernate:
+      ddl-auto: create-drop  # Lager databasen ved oppstart og sletter den etter testen.
+    show-sql: true           # Viser SQL-spørringer i konsollen (nyttig for debugging).
+    properties:
+      hibernate:
+        format_sql: true     # Formatterer SQL-output i konsollen.
+  h2:
+    console:
+      enabled: true          # Aktiverer H2 web-konsollen for testing.
+
+logging:
+  level:
+    org:
+      springframework:
+        sql: debug           # Setter logging til å vise SQL-spørringer under testing.

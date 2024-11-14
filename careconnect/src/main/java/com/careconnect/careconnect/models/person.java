@@ -3,16 +3,13 @@ package com.careconnect.careconnect.models;
 import javax.persistence.MappedSuperclass;
 
 @MappedSuperclass
-public abstract class Person {
+public abstract class person {
     private String firstName;
     private String lastName;
 
-    public Person(String firstN, String lastN) {
+    public person(String firstN, String lastN) {
         this.firstName = firstN;
         this.lastName = lastN;
-    }
-
-    public Person() {
     }
 
     // Standard getters and setters...
