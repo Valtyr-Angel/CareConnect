@@ -24,7 +24,7 @@
       <module name="careconnect" options="-parameters" />
       <module name="careconnect-application" options="-parameters" />
       <module name="careconnect-core" options="-parameters" />
-      <module name="careconnect-parent" options="-parameters" />
+      <module name="careconnect-parent" options="" />
       <module name="careconnect-security" options="-parameters" />
     </option>
   </component>
