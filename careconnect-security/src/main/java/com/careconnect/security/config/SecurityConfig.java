@@ -34,7 +34,7 @@ public class SecurityConfig {
 }
 
 
-// securityfilterchain klassen tar imot http requests, gir alle brukere tilgang til nettressurser, 
+// securityfilterchain klassen tar imot parameter http requests, gir alle brukere tilgang til nettressurser, 
 //blokkerer tilgang til beskyttede endepunkt ( her /admin og /user, som krever autentisering for tilgang)
         @SuppressWarnings({ "deprecation", "removal" })
         @Bean
@@ -43,12 +43,10 @@ public class SecurityConfig {
                 .csrf().disable()
      .authorizeRequests(authorizeRequests ->
        authorizeRequests
-           //.requestMatchers("/login", "/error", "/resources/**", "/static/**", "/css/**", "/js/**", 
-                   //"/application/static/**","/application/resources/**",
-                   //"/application/css/**","/application/templates/**").permitAll()
-                   
+                    // .permitall(gir tilgang for alle brukere)
                    .requestMatchers(  "/application/static/**","/application/resources/**",
                    "/application/css/**","/application/templates/**").permitAll()
+                   //. hasRole restrikterer adgang til kun de som har rollen spesifisert
            .requestMatchers("/admin/**").hasRole("ADMIN")
            .requestMatchers("/user/**").hasRole("USER")
            .anyRequest().authenticated()
@@ -66,7 +64,7 @@ public class SecurityConfig {
                 );
             return http.build();
         }
-    // for enkel tilgang har vi hardkodet brukerdetaljer for testing og ikke fokus på mer innloggingsfunksjonalitet
+    // for enkel tilgang har vi hardkodet brukerdetaljer for testing og ikke fokusert på mer innloggingsfunksjonalitet
     //her er oppgaven for neste team å implementere sjekking mot DB, salting etc.
         @Bean
         public UserDetailsService userDetailsService(PasswordEncoder passwordEncoder) {

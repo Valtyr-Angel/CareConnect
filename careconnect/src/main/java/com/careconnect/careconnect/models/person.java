@@ -1,6 +1,6 @@
 package com.careconnect.careconnect.models;
 
-import javax.persistence.MappedSuperclass;
+import jakarta.persistence.MappedSuperclass;
 
 @MappedSuperclass
 public abstract class Person {

@@ -14,7 +14,7 @@ import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 
-// denne klassen tar for seg logikken etter at brukeren har blitt autentisert. 
+// denne klassen tar for seg logikken etter at brukeren har blitt autentisert av authenticationService 
 //klassen sjekker brukerens rettigheter (rolle) og sender bruker til rette endepunkt
 // denne funksjonaliteten er viktig for RBAC (role based access controll)
 // har også lagt til logger funksjonalitet som viser rettigheter brukeren har, og endepunkt den blir sendt til
@@ -25,14 +25,22 @@ import jakarta.servlet.http.HttpServletResponse;
 @Component
 public class CustomAuthenticationSuccessHandler implements AuthenticationSuccessHandler {
 
+    //logger til terminal
     private static final Logger logger = LoggerFactory.getLogger(CustomAuthenticationSuccessHandler.class);
 
+
+    /**
+     * This method is called when a user is successfully authenticated.
+     * It logs the user's login, checks the user's roles, and redirects them to the appropriate endpoint.
+     * 
+ 
+     */
     @Override
     public void onAuthenticationSuccess(HttpServletRequest request, HttpServletResponse response, Authentication authentication) throws IOException, ServletException {
         
         logger.info("User '{}' has logged in successfully.", authentication.getName());
 
-        
+        //logger brukerrolle til terminal etter autentisering er utført
         Set<String> roles = AuthorityUtils.authorityListToSet(authentication.getAuthorities());
         logger.info("User '{}' has roles: {}", authentication.getName(), roles);
 
@@ -49,7 +57,7 @@ public class CustomAuthenticationSuccessHandler implements AuthenticationSuccess
        
         logger.info("Redirecting user '{}' to '{}'", authentication.getName(), targetUrl);
 
-        
+        // bygger URL ut ifra String ovenfor 
         response.sendRedirect(request.getContextPath() + targetUrl);
     }
 }

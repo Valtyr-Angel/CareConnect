@@ -28,19 +28,14 @@ import jakarta.servlet.http.HttpServletResponse;
 @SpringBootTest
 @ContextConfiguration(classes = TestConfigSecurity.class)
 public class CustomAuthenticationSuccessHandlerTest {
-
     @Mock
     private HttpServletRequest request;
-
     @Mock
     private HttpServletResponse response;
-
     @InjectMocks
     private CustomAuthenticationSuccessHandler successHandler;
-
     @Autowired
     private InMemoryUserDetailsManager inMemoryUserDetailsManager;
-
     @BeforeEach
     public void setUp() {
         MockitoAnnotations.openMocks(this);

@@ -3,6 +3,7 @@ package com.careconnect.security;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.security.test.context.support.WithMockUser;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit.jupiter.SpringJUnitConfig;
@@ -16,7 +17,9 @@ import org.springframework.web.context.WebApplicationContext;
 
 import com.careconnect.security.config.TestConfigSecurity;
 
+
 @SpringJUnitConfig
+@SpringBootTest
 @ContextConfiguration(classes = { TestConfigSecurity.class })
 @WebAppConfiguration
 public class SecurityConfigTest {
