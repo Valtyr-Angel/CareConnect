@@ -18,7 +18,6 @@
         <module>careconnect</module>
         <module>careconnect-application</module>
         <module>careconnect-security</module>
-        <module>GUI</module>
         <module>careconnect-gui</module>
     </modules>
 

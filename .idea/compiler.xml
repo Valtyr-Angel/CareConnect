@@ -9,6 +9,7 @@
         <module name="careconnect" />
         <module name="careconnect-security" />
         <module name="careconnect-core" />
+        <module name="careconnect-gui" />
         <module name="careconnect-application" />
       </profile>
     </annotationProcessing>
@@ -24,6 +25,7 @@
       <module name="careconnect" options="-parameters" />
       <module name="careconnect-application" options="-parameters" />
       <module name="careconnect-core" options="-parameters" />
+      <module name="careconnect-gui" options="-parameters" />
       <module name="careconnect-parent" options="-parameters" />
       <module name="careconnect-security" options="-parameters" />
     </option>
