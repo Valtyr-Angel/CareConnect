@@ -9,6 +9,10 @@ import org.springframework.stereotype.Service;
 
 import com.careconnect.security.service.AuthenticationService;
 
+// denne klassen implementerer springboots egen autentiseringslogikk.
+// sjekker brukerens passord og brukernavn og returene autentisert eller ikke autentisert
+
+
 @Service
 public class AuthenticationServiceImplementation implements AuthenticationService {
 

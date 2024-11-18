@@ -1,0 +1,29 @@
+package com.careconnect.security;
+
+
+
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.junit.jupiter.api.Test;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+
+class SeleniumE2ETest {
+
+    @Test
+    void testLogin() {
+        System.setProperty("webdriver.chrome.driver", "/path/to/chromedriver");
+
+        WebDriver driver = new ChromeDriver();
+        driver.get("http://localhost:8080/login");
+
+        driver.findElement(By.id("username")).sendKeys("user");
+        driver.findElement(By.id("password")).sendKeys("password");
+        driver.findElement(By.id("submit")).click();
+
+        assertEquals("http://localhost:8080/user", driver.getCurrentUrl());
+
+        driver.quit();
+    }
+}

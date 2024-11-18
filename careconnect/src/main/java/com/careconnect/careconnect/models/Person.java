@@ -1,5 +1,6 @@
 package com.careconnect.careconnect.models;
 
+import jakarta.persistence.MappedSuperclass;
 
 
 
