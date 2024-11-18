@@ -1,3 +1,4 @@
+package careconnect.models;
 
 import javax.swing.*;
 
