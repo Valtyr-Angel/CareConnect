@@ -5,14 +5,14 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 
-public class Application {
+public class GuiApp {
     private JFrame frame;
     private JPanel mainPanel;
     private CardLayout cardLayout;
 
     private DoorLock doorLock = new DoorLock();
 
-    public Application() {
+    public GuiApp() {
         // Create the main frame
         frame = new JFrame("CareConnect");
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -511,12 +511,5 @@ public class Application {
         doorLockFrame.setVisible(true);
     }
 
-    public static void main(String[] args) {
-        SwingUtilities.invokeLater(new Runnable() {
-            @Override
-            public void run() {
-                new Application();
-            }
-        });
-    }
+
 }
