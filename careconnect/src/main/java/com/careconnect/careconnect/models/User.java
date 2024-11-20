@@ -69,7 +69,13 @@ public class User extends Person implements UserDetails {
     public void setRole(String role) {
         this.role = role;
     }
+    public long getUserId(){
+        return userId;
+    }
 
+    public void setUserId(long id){
+        this.userId = id;
+    }
 
     // nedforliggende atributter er lenket sammen med spring boots egen User/ Userdetails, 
     // er attributter nyttige i databasedrift med aktivering og lockout av brukere
