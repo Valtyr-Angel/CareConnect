@@ -29,12 +29,7 @@ public class CustomAuthenticationSuccessHandler implements AuthenticationSuccess
     private static final Logger logger = LoggerFactory.getLogger(CustomAuthenticationSuccessHandler.class);
 
 
-    /**
-     * This method is called when a user is successfully authenticated.
-     * It logs the user's login, checks the user's roles, and redirects them to the appropriate endpoint.
-     * 
- 
-     */
+
     @Override
     public void onAuthenticationSuccess(HttpServletRequest request, HttpServletResponse response, Authentication authentication) throws IOException, ServletException {
         

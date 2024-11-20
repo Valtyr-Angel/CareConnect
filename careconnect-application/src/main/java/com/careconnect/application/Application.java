@@ -1,3 +1,9 @@
+
+/**
+ * startpunkt for spring-boot og applikasjonen
+ * bruker @scan etc for å hente inn ressurser fra de andre modulene for bruk under kjøring
+ *  
+ */
 package com.careconnect.application;
 
 import org.springframework.boot.SpringApplication;

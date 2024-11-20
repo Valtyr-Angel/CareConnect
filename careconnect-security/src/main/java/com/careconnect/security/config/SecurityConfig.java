@@ -1,3 +1,11 @@
+/**
+*dette er en config fil som instansierer en rekke @beans som spring boot instansierer og adminsitrerer
+* ,passwordEncoder,InMemoryUserDetailsManager blir brukt for å hardkode eksempelbrukere
+* CustomAuthenticationSuccessHandler, SecurityFilterChain,authenticationManager kjører logikk for innlogging
+ */
+
+
+
 package com.careconnect.security.config;
 
 import org.springframework.context.annotation.Bean;
@@ -36,11 +44,14 @@ public class SecurityConfig {
                 .csrf(csrf -> csrf.disable())
                 .authorizeHttpRequests(authorizeRequests ->
                         authorizeRequests
+                        // gir tilgang til endepunkt til alle brukere
                                 .requestMatchers(
                                         "/application/static/**", "/application/resources/**",
                                         "/application/css/**", "/application/templates/**",
                                         "/api/jsonfile", "/api/patientInfo" // Legg til ditt API-endepunkt her
                                 ).permitAll()
+
+                                //beskytter endepunt basert på roller
                                 .requestMatchers("/admin/**").hasRole("ADMIN")
                                 .requestMatchers("/user/**").hasRole("USER")
                                 .anyRequest().authenticated()
@@ -54,11 +65,12 @@ public class SecurityConfig {
                 .logout(logout ->
                         logout.permitAll()
                 );
+                //returerer webside basert på logikk ovenfor
         return http.build();
     }
     
 
-    @Bean
+    @Bean // hardkoder brukere for prototype
     public UserDetailsService userDetailsService(PasswordEncoder passwordEncoder) {
         InMemoryUserDetailsManager manager = new InMemoryUserDetailsManager();
         manager.createUser(User.withUsername("user")
