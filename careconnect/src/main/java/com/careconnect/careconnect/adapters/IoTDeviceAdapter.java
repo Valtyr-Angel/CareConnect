@@ -21,6 +21,9 @@ import com.careconnect.careconnect.ports.IoTDevicePort;
  * </pre>
  */
 
+ // Kravspesifikasjon 3 - IoT Device***
+
+
 public class IoTDeviceAdapter implements IoTDevicePort {
 
     private List<IoTDevice> devices = new ArrayList<>();  // Simulerer en lagring

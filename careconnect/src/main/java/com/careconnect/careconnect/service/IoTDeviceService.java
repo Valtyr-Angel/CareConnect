@@ -22,6 +22,9 @@ import com.careconnect.careconnect.ports.IoTDevicePort;
  * </pre>
  */
 
+  // Kravspesifikasjon 3 - IoT Device***
+
+
 public class IoTDeviceService {
 
     private final IoTDevicePort ioTDevicePort;

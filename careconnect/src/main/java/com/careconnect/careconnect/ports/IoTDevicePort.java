@@ -19,6 +19,9 @@ import com.careconnect.careconnect.models.IoTDevice;  // Adjust the package path
  * </pre>
  */
 
+  // Kravspesifikasjon 3 - IoT Device***
+
+
 public interface IoTDevicePort {
 
     IoTDevice getDeviceById(String id);  // Hent en enhet etter ID
