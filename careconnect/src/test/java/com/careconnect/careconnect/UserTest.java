@@ -10,7 +10,7 @@ import com.careconnect.careconnect.models.doctor;
 
 public class UserTest{
     @Test
-    public void TestCreateUser(){//vet egt ikke hvorfor
+    public void TestCreateUser(){
        User user = new User("Ola", "Nordmann", (long) 2, "OlaRuler123", "passord", "USER");
        
        String expectedFirstName = "Ola";
