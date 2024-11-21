@@ -2,12 +2,12 @@ package com.careconnect.persons;
 
 import java.util.ArrayList;
 
-public class doctor extends user {
+public class doctor extends User {
     
     private ArrayList<Integer> assignedPatients = new ArrayList<>();
 
-    public doctor(String firstN, String lastN, int id, String role, String password){
-        super(firstN, lastN, id, role, password);
+    public doctor(String firstName, String lastName, Long userId, String username, String password, String role){
+        super(firstName, lastName, userId,username, password, role);
 
     }
     public void addAssignedPatient(Object patientId) {

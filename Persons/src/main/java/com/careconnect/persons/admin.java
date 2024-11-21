@@ -1,10 +1,10 @@
 package com.careconnect.persons;
 
-public class admin extends user{
+public class admin extends User{
     
     private String userRole="ADMIN";
-    admin(String firstN, String lastN, int id, String role, String password){
-        super(firstN, lastN, id, role, password);
+    admin(String firstName, String lastName, Long userId,String username, String role, String password){
+        super(firstName, lastName, userId,username, role, password);
     }
 }
 

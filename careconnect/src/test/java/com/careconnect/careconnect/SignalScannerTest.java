@@ -5,6 +5,28 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.test.context.ContextConfiguration;
+
+import com.careconnect.careconnect.config.TestConfigScanner;
+
+/**
+ * SignalScannerTest er en testklasse for å validere funksjonaliteten til SignalScanner-klassen.
+ * Den tester ulike scenarier for signalhåndtering, som godkjenning og avvisning basert på signalets innhold.
+ * 
+ * Testene er organisert som enhetstester med bruk av JUnit 5 og Spring Boot testing-rammeverk.
+ * 
+ * Eksempel på bruk:
+ * <pre>
+ * SpringBootTest
+ * ContextConfiguration(classes = TestConfigScanner.class)
+ * public class SignalScannerTest { ... }
+ * </pre>
+ */
+
+// Kravspesifikasjon 2 - Pasientidentifikasjon
+//Karvspesifikasjon 19 - Testkrav
+
+
 
 /**
 * Unit tests for the SignalScanner class.
@@ -23,7 +45,12 @@ import org.springframework.boot.test.context.SpringBootTest;
 */
 
 @SpringBootTest
+<<<<<<< HEAD
 class SignalScannerTest {
+=======
+@ContextConfiguration(classes = TestConfigScanner.class)
+public class SignalScannerTest {
+>>>>>>> main_merge
 
     @Autowired
     private SignalScanner signalScanner; // Inject SignalScanner as a Spring bean

@@ -2,6 +2,22 @@ package com.careconnect.iot;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
+/**
+* Representerer en funksjonell IoT-enhet med mulighet for å endre tilstand (på/av).
+*
+* FunctionalIoTDevice er en utvidelse av iotDevice og legger til funksjonalitet
+* for å skru enheten av og på. Enheten har en innebygd statusindikator for å 
+* spore om den er aktiv.
+*
+* Eksempel på bruk:
+* <pre>
+* FunctionalIoTDevice device = new FunctionalIoTDevice("002", "Hjerteovervåker", "ICU", "Av");
+* device.turnOn();
+* </pre>
+*/
+
+// Kravspesifikasjon 3 - IoT Device
+
 
 /**
 * Representerer en funksjonell IoT-enhet med mulighet for å endre tilstand (på/av).

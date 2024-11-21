@@ -1,4 +1,8 @@
 {
     "java.compile.nullAnalysis.mode": "automatic",
+<<<<<<< HEAD
     "java.configuration.updateBuildConfiguration": "disabled"
+=======
+    "java.configuration.updateBuildConfiguration": "automatic"
+>>>>>>> main_merge
 }

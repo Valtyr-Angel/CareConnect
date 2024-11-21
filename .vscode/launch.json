@@ -2,6 +2,21 @@
     "configurations": [
         {
             "type": "java",
+            "name": "Application",
+            "request": "launch",
+            "mainClass": "com.careconnect.application.Application",
+            "projectName": "careconnect-application",
+            "vmArgs": " -Dcom.sun.management.jmxremote"
+        },
+        {
+            "type": "java",
+            "name": "Applikasjon",
+            "request": "launch",
+            "mainClass": "com.careconnect.careconnect.GUI.Applikasjon",
+            "projectName": "careconnect"
+        },
+        {
+            "type": "java",
             "name": "Spring Boot-CareconnectApplication<careconnect>",
             "request": "launch",
             "cwd": "${workspaceFolder}",
@@ -12,21 +27,11 @@
         },
         {
             "type": "java",
-            "name": "Spring Boot-CareconnectApplication<careconnect-core>",
+            "name": "Spring Boot-Application<careconnect-core>",
             "request": "launch",
             "cwd": "${workspaceFolder}",
-            "mainClass": "com.careconnect.careconnect.CareconnectApplication",
+            "mainClass": "com.careconnect.careconnect.GUI.Application",
             "projectName": "careconnect-core",
-            "args": "",
-            "envFile": "${workspaceFolder}/.env"
-        },
-        {
-            "type": "java",
-            "name": "Spring Boot-CareconnectSecurity<careconnect-security>",
-            "request": "launch",
-            "cwd": "${workspaceFolder}",
-            "mainClass": "com.careconnect.security.CareconnectSecurity",
-            "projectName": "careconnect-security",
             "args": "",
             "envFile": "${workspaceFolder}/.env"
         }
