@@ -4,6 +4,8 @@
 * CustomAuthenticationSuccessHandler, SecurityFilterChain,authenticationManager kjører logikk for innlogging
  */
 
+ //Kravspesifikasjon 1 - Autentisering/tilgangskontroll
+
 
 
 package com.careconnect.security.config;

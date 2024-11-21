@@ -17,6 +17,9 @@ import org.springframework.security.core.authority.SimpleGrantedAuthority;
 
 import com.careconnect.security.service.implementation.AuthenticationServiceImplementation;
 
+//Kravspesifikasjon 1 - Autentisering/tilgangskontroll
+
+
 @ExtendWith(MockitoExtension.class)
 public class AuthenticationServiceImplementationTest {
 

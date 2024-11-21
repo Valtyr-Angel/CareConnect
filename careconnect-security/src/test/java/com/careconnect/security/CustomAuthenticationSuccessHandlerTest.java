@@ -25,6 +25,9 @@ import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 
+//Kravspesifikasjon 1 - Autentisering/tilgangskontroll
+
+
 @SpringBootTest
 @ContextConfiguration(classes = TestConfigSecurity.class)
 public class CustomAuthenticationSuccessHandlerTest {

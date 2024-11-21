@@ -20,6 +20,8 @@ import jakarta.servlet.http.HttpServletResponse;
 // har også lagt til logger funksjonalitet som viser rettigheter brukeren har, og endepunkt den blir sendt til
 // dette blir skrevet til terminal under kjøring
 
+//Kravspesifikasjon 1 - Autentisering/tilgangskontroll
+
 
 
 @Component
