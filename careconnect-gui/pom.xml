@@ -7,11 +7,25 @@
           <groupId>careconnect</groupId>
           <artifactId>careconnect-parent</artifactId>
           <version>0.0.1-SNAPSHOT</version>
+          <relativePath>../pom.xml</relativePath>
     </parent>
 
     <groupId>careconnect</groupId>
     <artifactId>careconnect-gui</artifactId>
     <version>0.0.1-SNAPSHOT</version>
+
+    <dependencies>
+            <dependency>
+  <groupId>org.json</groupId>
+  <artifactId>json</artifactId>
+  <version>20240303</version>
+</dependency>
+
+    </dependencies>
+
+
+
+
 
     <properties>
         <maven.compiler.source>17</maven.compiler.source>
