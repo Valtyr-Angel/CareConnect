@@ -9,6 +9,23 @@ import org.springframework.test.context.ContextConfiguration;
 
 import com.careconnect.careconnect.config.TestConfigScanner;
 
+/**
+ * SignalScannerTest er en testklasse for å validere funksjonaliteten til SignalScanner-klassen.
+ * Den tester ulike scenarier for signalhåndtering, som godkjenning og avvisning basert på signalets innhold.
+ * 
+ * Testene er organisert som enhetstester med bruk av JUnit 5 og Spring Boot testing-rammeverk.
+ * 
+ * Eksempel på bruk:
+ * <pre>
+ * SpringBootTest
+ * ContextConfiguration(classes = TestConfigScanner.class)
+ * public class SignalScannerTest { ... }
+ * </pre>
+ */
+
+// Kravspesifikasjon 2 - Pasientidentifikasjon
+
+
 @SpringBootTest
 @ContextConfiguration(classes = TestConfigScanner.class)
 public class SignalScannerTest {
