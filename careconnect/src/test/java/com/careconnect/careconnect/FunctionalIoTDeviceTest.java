@@ -12,6 +12,25 @@ import org.springframework.test.context.ContextConfiguration;
 import com.careconnect.careconnect.config.TestConfigIot;
 import com.careconnect.careconnect.models.FunctionalIoTDevice;
 
+/**
+ * Testklasse for validering av funksjonaliteten til FunctionalIoTDevice.
+ * 
+ * Denne klassen utfører enhetstester for å sikre at metodene i FunctionalIoTDevice 
+ * fungerer som forventet. Testene validerer operasjoner som å slå enheten av og på, 
+ * samt håndtering av scenarioer der enheten allerede er på eller av.
+ * 
+ * Klassen bruker Spring Boot-testkonfigurasjon og en tilpasset testkonfigurasjon 
+ * (TestConfigIot) for å kjøre testene i et isolert miljø.
+ * 
+ * Eksempel på testscenarier:
+ * <pre>
+ * - Kontrollere at en enhet kan slås på fra av-status.
+ * - Kontrollere at en enhet kan slås av fra på-status.
+ * - Håndtere forsøk på å slå en enhet på som allerede er på.
+ * - Håndtere forsøk på å slå en enhet av som allerede er av.
+ * </pre>
+ */
+
 // Kravspesifikasjon 3 - IoT Device
 
 

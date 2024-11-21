@@ -2,6 +2,21 @@ package com.careconnect.careconnect.models;
 
 import org.springframework.stereotype.Component;
 
+/**
+ * Representasjonsklasse for en IoT-enhet.
+ * 
+ * Denne klassen modellerer en IoT-enhet med egenskaper som enhets-ID, navn, 
+ * plassering og status. Klassen brukes til å representere enheter i systemet 
+ * og inkluderer grunnleggende metoder for å hente og oppdatere informasjon om enheten.
+ * 
+ * Eksempel på bruk:
+ * <pre>
+ * IoTDevice device = new IoTDevice("001", "Temperaturmåler", "Kjøkken", "På");
+ * device.setStatus("Av");
+ * System.out.println(device);
+ * </pre>
+ */
+
 // Kravspesifikasjon 3 - IoT Device
 
 @Component
