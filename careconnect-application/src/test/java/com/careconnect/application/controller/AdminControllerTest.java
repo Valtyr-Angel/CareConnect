@@ -14,6 +14,9 @@ import static org.springframework.test.web.servlet.request.MockMvcRequestBuilder
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.view;
 
+//Karvspesifikasjon 19 - Testkrav
+
+
 @WebMvcTest(AdminController.class) // Test AdminController
 @ContextConfiguration(classes = {AdminController.class, AdminControllerTest.AdminTestConfig.class})
 public class AdminControllerTest {  // Class name matches the file name

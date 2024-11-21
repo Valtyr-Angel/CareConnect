@@ -24,6 +24,8 @@ import com.careconnect.careconnect.config.TestConfigScanner;
  */
 
 // Kravspesifikasjon 2 - Pasientidentifikasjon
+//Karvspesifikasjon 19 - Testkrav
+
 
 
 @SpringBootTest

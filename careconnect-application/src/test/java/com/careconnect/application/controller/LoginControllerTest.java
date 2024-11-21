@@ -11,6 +11,9 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 
 import com.careconnect.security.config.SecurityConfig;
 
+//Karvspesifikasjon 19 - Testkrav
+
+
 @WebMvcTest(LoginController.class)
 @ContextConfiguration(classes = {LoginController.class, SecurityConfig.class}) 
 public class LoginControllerTest {

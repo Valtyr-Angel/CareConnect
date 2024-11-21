@@ -5,6 +5,9 @@ import org.springframework.context.annotation.Configuration;
 
 import com.careconnect.careconnect.models.FunctionalIoTDevice;
 
+//Karvspesifikasjon 19 - Testkrav
+
+
 @Configuration
 public class TestConfigIot {
     @Bean

@@ -32,6 +32,8 @@ import com.careconnect.careconnect.models.FunctionalIoTDevice;
  */
 
 // Kravspesifikasjon 3 - IoT Device
+//Karvspesifikasjon 19 - Testkrav
+
 
 
 @SpringBootTest

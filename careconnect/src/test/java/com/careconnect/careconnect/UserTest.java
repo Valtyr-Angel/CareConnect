@@ -8,6 +8,8 @@ import org.springframework.boot.autoconfigure.jooq.JooqAutoConfiguration.DslCont
 import com.careconnect.careconnect.models.User;
 import com.careconnect.careconnect.models.doctor;
 
+//Karvspesifikasjon 19 - Testkrav
+
 public class UserTest{
     @Test
     public void TestCreateUser(){

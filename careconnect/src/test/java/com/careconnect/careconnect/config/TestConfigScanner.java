@@ -5,6 +5,9 @@ import org.springframework.context.annotation.Configuration;
 
 import com.careconnect.careconnect.SignalScanner;
 
+//Karvspesifikasjon 19 - Testkrav
+
+
 @Configuration
 public class TestConfigScanner {
     @Bean

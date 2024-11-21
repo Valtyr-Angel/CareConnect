@@ -26,6 +26,8 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 
 //Kravspesifikasjon 1 - Autentisering/tilgangskontroll
+//Karvspesifikasjon 19 - Testkrav
+
 
 
 @SpringBootTest

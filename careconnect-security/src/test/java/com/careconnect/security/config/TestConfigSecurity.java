@@ -24,8 +24,8 @@ import org.springframework.web.bind.annotation.RestController;
 @ComponentScan(basePackages = "com.careconnect.security.service.implementation")
 public class TestConfigSecurity {
 
-// setter opp testklasser for Security modulen
-// må gjøres for å ha mer hexagonal arkitektur
+//Karvspesifikasjon 19 - Testkrav
+
 
 
 // instansierer 3 brukere

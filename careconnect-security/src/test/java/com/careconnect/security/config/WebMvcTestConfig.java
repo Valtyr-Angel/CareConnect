@@ -5,6 +5,9 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 import org.springframework.web.servlet.handler.HandlerMappingIntrospector;
 
+//Karvspesifikasjon 19 - Testkrav
+
+
 @TestConfiguration
 public class WebMvcTestConfig implements WebMvcConfigurer {
 

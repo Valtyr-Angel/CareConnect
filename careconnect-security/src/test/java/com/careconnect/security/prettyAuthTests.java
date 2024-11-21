@@ -17,6 +17,9 @@ import org.springframework.security.core.authority.SimpleGrantedAuthority;
 
 import com.careconnect.security.service.implementation.AuthenticationServiceImplementation;
 
+//Karvspesifikasjon 19 - Testkrav
+
+
 @ExtendWith(MockitoExtension.class)
 public class prettyAuthTests {
 

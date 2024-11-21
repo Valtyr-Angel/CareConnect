@@ -6,6 +6,9 @@ import static org.junit.jupiter.api.Assertions.*;
 import org.springframework.boot.autoconfigure.jooq.JooqAutoConfiguration.DslContextConfiguration;
 import com.careconnect.careconnect.models.doctor;
 
+//Karvspesifikasjon 19 - Testkrav
+
+
 
 public class doctortest {
     @Test
