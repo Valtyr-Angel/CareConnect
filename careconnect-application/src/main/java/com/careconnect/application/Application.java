@@ -14,7 +14,7 @@ import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 
 import careconnect.models.GuiApp;
 
-@ComponentScan(basePackages = {"com.careconnect.careconnect", "com.careconnect.security","com.careconnect.application"})
+@ComponentScan(basePackages = {"com.careconnect.careconnect", "com.careconnect.security","com.careconnect.application","com.careconnect.gui"})
 @SpringBootApplication(scanBasePackages = "com.careconnect.careconnect")
 @EntityScan(basePackages = "com.careconnect.careconnect.models")
 @EnableJpaRepositories(basePackages = "com.careconnect.careconnect.repository")
