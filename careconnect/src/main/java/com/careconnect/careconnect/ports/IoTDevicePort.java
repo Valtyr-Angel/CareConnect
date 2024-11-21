@@ -20,6 +20,8 @@ import com.careconnect.careconnect.models.IoTDevice;  // Adjust the package path
  */
 
   // Kravspesifikasjon 3 - IoT Device***
+   // Kravspesifikasjon 18 - skalerbarhet
+
 
 
 public interface IoTDevicePort {

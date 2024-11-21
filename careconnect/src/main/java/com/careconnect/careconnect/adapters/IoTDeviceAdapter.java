@@ -22,6 +22,7 @@ import com.careconnect.careconnect.ports.IoTDevicePort;
  */
 
  // Kravspesifikasjon 3 - IoT Device***
+ // Kravspesifikasjon 18 - skalerbarhet
 
 
 public class IoTDeviceAdapter implements IoTDevicePort {
