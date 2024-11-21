@@ -12,6 +12,9 @@ import org.springframework.test.context.ContextConfiguration;
 import com.careconnect.careconnect.config.TestConfigIot;
 import com.careconnect.careconnect.models.FunctionalIoTDevice;
 
+// Kravspesifikasjon 3 - IoT Device
+
+
 @SpringBootTest
 @ContextConfiguration(classes = TestConfigIot.class)
 public class FunctionalIoTDeviceTest {

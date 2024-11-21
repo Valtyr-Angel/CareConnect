@@ -14,6 +14,10 @@ import org.springframework.stereotype.Component;
 * device.turnOn();
 * </pre>
 */
+
+// Kravspesifikasjon 3 - IoT Device
+
+
 @Component
 public class FunctionalIoTDevice extends IoTDevice {
     private boolean isOn;

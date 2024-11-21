@@ -2,6 +2,8 @@ package com.careconnect.careconnect.models;
 
 import org.springframework.stereotype.Component;
 
+// Kravspesifikasjon 3 - IoT Device
+
 @Component
 public class IoTDevice {
     private String deviceId;
